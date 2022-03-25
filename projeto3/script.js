@@ -12,30 +12,20 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 35. Concatenação de textos e números
+ * ············ Aula 36. Organizando as variáveis
  * *****
  */
 
-// Dados do personagem
-let nome = 'Herói';
-let vida = 100;
-let forca = 10;
-let defesa = 5;
+let heroi = {
+    nome: 'Alast',
+    vida: 100,
+    poder: 10,
+    defesa: 5,
+};
 
-// Habilidades
-let pulo = false;
-let fogo = false;
-let nadar = true;
-
-// Dados do monstro
-let monstro_nome = 'Lesma-Gigante';
-let monstro_vida = 800;
-let monstro_forca = 50;
-let monstro_defesa = 1;
-
-// Operadores + - * /
-console.log(
-    'A Lesma Gigante atacou o herói: O herói sofreu ' +
-        (vida - monstro_forca) +
-        ' de dano.',
-);
+let orc = {
+    nome: 'Onix',
+    vida: 120,
+    poder: 20,
+    defesa: 6,
+};
