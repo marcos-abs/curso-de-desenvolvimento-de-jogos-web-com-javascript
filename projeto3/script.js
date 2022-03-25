@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 34. Operadores
+ * ············ Aula 35. Concatenação de textos e números
  * *****
  */
 
@@ -34,4 +34,8 @@ let monstro_forca = 50;
 let monstro_defesa = 1;
 
 // Operadores + - * /
-console.log((vida = vida - monstro_forca));
+console.log(
+    'A Lesma Gigante atacou o herói: O herói sofreu ' +
+        (vida - monstro_forca) +
+        ' de dano.',
+);
