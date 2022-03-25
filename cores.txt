@@ -1,0 +1,4 @@
+#16e097 - Cor de fundo
+#19ffab - Cor do campo
+#73ffcc - Cor das faixas
+#d6fff0 - Cor das marcações
