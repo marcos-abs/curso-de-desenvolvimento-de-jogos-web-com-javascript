@@ -1,6 +1,6 @@
 /**
  * *****
- * File: scripts.js
+ * File: script.js
  * Project: Curso de desenvolvimento de jogos web com Javascript
  * Path: /home/desenvolvedor/cursos/curso-jogos-web-javascript/projeto3
  * File Created: Friday, 25 March 2022 16:43:27
@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 31. Comentários
+ * ············ Aula 32. Utilizando o script.js
  * *****
  */
 
