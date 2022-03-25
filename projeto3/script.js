@@ -12,13 +12,13 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 39. Funções
+ * ············ Aula 40. Colocando em prática
  * *****
  */
 
 let heroi = {
     nome: 'Alast',
-    vida: 9,
+    vida: 100,
     poder: 10,
     defesa: 5,
 };
@@ -31,12 +31,23 @@ let orc = {
 };
 
 function Main() {
-    console.log('A batalha começa: ');
-    Attack();
+    console.log('A batalha começa!');
+    console.log('Um orc gigante apareceu!');
+    console.log('Qual a sua escolha?');
+    console.log('1 - Atacar: ');
+    console.log('2 - Defender: ');
+    console.log('3 - Fugir! ');
+
+    let escolha = 1;
+
+    if (escolha == 1) {
+        Atacar();
+    }
 }
 
-function Attack() {
-    console.log('O heroi atacou o monstro: ');
+function Atacar() {
+    console.log('O Heroi ataca!');
+    console.log('O Orc perdeu ' + (heroi.poder - orc.defesa) + ' de vida!');
 }
 
 Main();
