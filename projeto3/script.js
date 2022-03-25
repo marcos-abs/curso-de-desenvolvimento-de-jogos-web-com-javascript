@@ -12,13 +12,13 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 36. Organizando as variáveis
+ * ············ Aula 37. Condições
  * *****
  */
 
 let heroi = {
     nome: 'Alast',
-    vida: 100,
+    vida: 9,
     poder: 10,
     defesa: 5,
 };
@@ -29,3 +29,13 @@ let orc = {
     poder: 20,
     defesa: 6,
 };
+
+let combate = true;
+
+if (combate) {
+    console.log('A batalha começou');
+}
+
+if (heroi.vida < 10) {
+    console.log('Nosso heroi esta ferido');
+}
