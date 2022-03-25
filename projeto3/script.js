@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 32. Utilizando o script.js
+ * ············ Aula 33. Console do navegador
  * *****
  */
 
@@ -26,3 +26,5 @@ let defesa = 5;
 let pulo = false;
 let fogo = false;
 let nadar = true;
+
+console.log(vida);
