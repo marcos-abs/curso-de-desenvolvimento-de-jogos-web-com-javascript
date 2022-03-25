@@ -12,14 +12,17 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 30. Variáveis
+ * ············ Aula 31. Comentários
  * *****
  */
 
+// Dados do personagem
+let nome = 'Herói';
 let vida = 100;
 let forca = 10;
 let defesa = 5;
 
-let nome = 'Herói';
-
+// Habilidades
 let pulo = false;
+let fogo = false;
+let nadar = true;
