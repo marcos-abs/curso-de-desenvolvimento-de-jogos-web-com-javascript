@@ -138,3 +138,25 @@ body {
     background-color: white;
     border-radius: 50%;
 }
+
+.Jogador1 {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 10px;
+    height: 80px;
+    background-color: white;
+}
+
+.Jogador2 {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 10px;
+    height: 80px;
+    background-color: white;
+}
