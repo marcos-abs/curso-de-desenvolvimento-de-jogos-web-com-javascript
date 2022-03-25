@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 38. Condições 2
+ * ············ Aula 39. Funções
  * *****
  */
 
@@ -30,16 +30,13 @@ let orc = {
     defesa: 6,
 };
 
-let combate = 55;
-
-if (combate == true) {
-    console.log('A batalha começou');
-} else if (combate == false) {
-    console.log('A batalha terminou');
-} else {
-    console.log('???????');
+function Main() {
+    console.log('A batalha começa: ');
+    Attack();
 }
 
-if (heroi.vida < 10) {
-    console.log('Nosso heroi esta ferido');
+function Attack() {
+    console.log('O heroi atacou o monstro: ');
 }
+
+Main();
