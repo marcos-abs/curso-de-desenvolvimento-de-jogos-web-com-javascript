@@ -63,8 +63,21 @@ body {
     top: 0;
     bottom: 0;
     margin: auto;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     background-color: #d6fff0;
+    border-radius: 50%;
+}
+
+.Circulo2 {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 133.5px;
+    height: 133.5px;
+    background-color: #19ffab;
     border-radius: 50%;
 }
