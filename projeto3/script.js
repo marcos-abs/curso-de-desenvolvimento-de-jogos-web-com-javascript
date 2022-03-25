@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 33. Console do navegador
+ * ············ Aula 34. Operadores
  * *****
  */
 
@@ -27,4 +27,11 @@ let pulo = false;
 let fogo = false;
 let nadar = true;
 
-console.log(vida);
+// Dados do monstro
+let monstro_nome = 'Lesma-Gigante';
+let monstro_vida = 800;
+let monstro_forca = 50;
+let monstro_defesa = 1;
+
+// Operadores + - * /
+console.log((vida = vida - monstro_forca));
