@@ -1,0 +1,17 @@
+{
+    "psi-header.variables": [
+        ["projectname", "Curso de desenvolvimento de jogos web com Javascript"],
+        ["projectCreationYear", "2022"]
+    ],
+    "cSpell.userDictionaryLocation": "/home/desenvolvedor/.cspell-user-words.txt",
+    "cSpell.projectDictionaryLocation": "/home/desenvolvedor/cursos/curso-jogos-web-javascript/.cspell-project-words.txt",
+    "cSpell.customDictionaries": {
+        "project-words": {
+            "name": "project-words",
+            "path": "/home/desenvolvedor/cursos/curso-jogos-web-javascript/.cspell-project-words.txt",
+            "description": "Words used in this project",
+            "addWords": true
+        },
+        "custom": true
+    }
+}
