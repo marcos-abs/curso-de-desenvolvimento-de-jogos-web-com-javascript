@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 42. Função de Fugir
+ * ············ Aula 43. Definindo escolhas com prompt
  * *****
  */
 
@@ -42,7 +42,7 @@ function Main() {
     console.log('2 - Defender: ');
     console.log('3 - Fugir! ');
 
-    let escolha = 3;
+    let escolha = prompt('Escolha a sua opção: ');
 
     if (escolha == 1) {
         Atacar();
