@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 41. Função de Defesa
+ * ············ Aula 42. Função de Fugir
  * *****
  */
 
@@ -42,12 +42,14 @@ function Main() {
     console.log('2 - Defender: ');
     console.log('3 - Fugir! ');
 
-    let escolha = 2;
+    let escolha = 3;
 
     if (escolha == 1) {
         Atacar();
     } else if (escolha == 2) {
         Defender();
+    } else if (escolha == 3) {
+        Fugir();
     }
 }
 
@@ -60,6 +62,11 @@ function Defender() {
     heroi.guarda = true;
     console.log('O Heroi está em guarda.');
     console.log('Todo o dano é reduzido pela metade!');
+}
+
+function Fugir() {
+    console.log('O Heroi está fugindo!');
+    console.log('Que vergonha.');
 }
 
 Main();
