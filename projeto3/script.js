@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 43. Definindo escolhas com prompt
+ * ············ Aula 44. Loops com while
  * *****
  */
 
@@ -34,6 +34,8 @@ let orc = {
     defesa: 6,
 };
 
+let jogando = true;
+
 function Main() {
     console.log('A batalha começa!');
     console.log('Um orc gigante apareceu!');
@@ -50,6 +52,7 @@ function Main() {
         Defender();
     } else if (escolha == 3) {
         Fugir();
+        jogando = false;
     }
 }
 
@@ -69,4 +72,6 @@ function Fugir() {
     console.log('Que vergonha.');
 }
 
-Main();
+while (jogando) {
+    Main();
+}
