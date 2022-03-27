@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 52. Desenhando com fillRect()
+ * ············ Aula 53. Desenhando o jogador 2 e a bolinha
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
