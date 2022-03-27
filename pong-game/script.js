@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 63. Criando limits
+ * ············ Aula 64. Colisão com jogador 1
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -85,9 +85,12 @@ function Move_player() {
 
 function Move_Ball() {
     bolinha.px += bolinha.dir;
-    if (
-        bolinha.px > area_tela.tx - (jogador1.tx + jogador1.px) ||
-        bolinha.px < area_tela.ix + (jogador1.tx + jogador1.px)
+    if (bolinha.px > area_tela.tx || bolinha.px < area_tela.ix) {
+        bolinha.dir *= -1;
+    } else if (
+        bolinha.py + bolinha.ty >= jogador1.py &&
+        bolinha.py <= jogador1.py + jogador1.ty &&
+        bolinha.px <= jogador1.px + jogador1.tx
     ) {
         bolinha.dir *= -1;
     }
