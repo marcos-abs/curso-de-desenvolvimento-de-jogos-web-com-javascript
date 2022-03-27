@@ -12,6 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 47. Criando projeto
+ * ············ Aula 50. Javascript - GetElementByID()
  * *****
  */
+let canvas = document.getElementById('canvas'); // integração com o HTML5
