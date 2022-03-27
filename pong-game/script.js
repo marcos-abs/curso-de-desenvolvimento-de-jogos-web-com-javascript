@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 65. Colisão com jogador 2
+ * ············ Aula 66. Marcando pontos
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -56,6 +56,7 @@ let bolinha = {
 container.font = '20px Arial';
 let pts1 = 0;
 let pts2 = 0;
+let delay = 100;
 
 // document.addEventListener('keydown', function (e) { console.log(e.keyCode); });
 // para cima 38 para direita 39 para baixo 40 para esquerda 37
@@ -101,9 +102,25 @@ function Move_player() {
 
 function Move_Ball() {
     bolinha.px += bolinha.dir;
-    if (bolinha.px > area_tela.tx || bolinha.px < area_tela.ix) {
+}
+
+function Points() {
+    if (bolinha.px < area_tela.ix - delay) {
+        bolinha.px = area_tela.tx / 2 - 7.5;
+        bolinha.py = area_tela.ty / 2 - 7.5;
         bolinha.dir *= -1;
-    } else if (
+        pts2 += 1;
+    }
+    if (bolinha.px > area_tela.tx + delay) {
+        bolinha.px = area_tela.tx / 2 - 7.5;
+        bolinha.py = area_tela.ty / 2 - 7.5;
+        bolinha.dir *= -1;
+        pts1 += 1;
+    }
+}
+
+function Collision_Ball() {
+    if (
         bolinha.py + bolinha.ty >= jogador1.py &&
         bolinha.py <= jogador1.py + jogador1.ty &&
         bolinha.px <= jogador1.px + jogador1.tx
@@ -130,6 +147,8 @@ function Main() {
     container.clearRect(0, 0, 430, 280);
     Draw();
     Move_Ball();
+    Collision_Ball();
+    Points();
     Move_player();
 }
 
