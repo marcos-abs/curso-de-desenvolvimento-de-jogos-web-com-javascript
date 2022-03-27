@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 59. Eventos
+ * ············ Aula 60. Identificando teclas
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -55,8 +55,21 @@ container.font = '20px Arial';
 let pts1 = 0;
 let pts2 = 0;
 
-document.addEventListener('keydown', function () {
-    jogador1.py += 8;
+// document.addEventListener('keydown', function (e) { console.log(e.keyCode); });
+// para cima 38 para direita 39 para baixo 40 para esquerda 37
+
+document.addEventListener('keydown', function (e) {
+    if (e.keyCode === 83) {
+        if (jogador1.py < area_tela.ty - jogador1.ty) {
+            jogador1.py += 8;
+        }
+    }
+    if (e.keyCode === 87) {
+        if (jogador1.py > area_tela.iy) {
+            jogador1.py -= 8;
+        }
+    }
+    console.log('jogador1.py:', jogador1.py);
 });
 
 function Move_Ball() {
