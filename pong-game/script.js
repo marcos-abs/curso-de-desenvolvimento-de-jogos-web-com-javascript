@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 61. Refinando os movimentos
+ * ············ Aula 62. Parando de mover, ao soltar a tecla
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -25,7 +25,7 @@ let jogador1 = {
     py: 90,
     tx: 15,
     ty: 100,
-    dir: 8,
+    dir: 0,
 };
 
 // let jogador2 = container.fillRect(400, 90, 15, 100); // <canvas id="canvas" width="430" height="280"></canvas>
@@ -65,6 +65,12 @@ document.addEventListener('keydown', function (e) {
     }
     if (e.keyCode === 87) {
         jogador1.dir = -8;
+    }
+});
+
+document.addEventListener('keyup', function (e) {
+    if (e.keyCode === 83 || e.keyCode === 87) {
+        jogador1.dir = 0;
     }
 });
 
