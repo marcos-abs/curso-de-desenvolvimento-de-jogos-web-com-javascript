@@ -12,7 +12,8 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 50. Javascript - GetElementByID()
+ * ············ Aula 51. Criando um container com getContext("2d")
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
+let container = canvas.getContext('2d');
