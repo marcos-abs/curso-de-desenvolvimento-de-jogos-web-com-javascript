@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 60. Identificando teclas
+ * ············ Aula 61. Refinando os movimentos
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -25,6 +25,7 @@ let jogador1 = {
     py: 90,
     tx: 15,
     ty: 100,
+    dir: 8,
 };
 
 // let jogador2 = container.fillRect(400, 90, 15, 100); // <canvas id="canvas" width="430" height="280"></canvas>
@@ -60,17 +61,16 @@ let pts2 = 0;
 
 document.addEventListener('keydown', function (e) {
     if (e.keyCode === 83) {
-        if (jogador1.py < area_tela.ty - jogador1.ty) {
-            jogador1.py += 8;
-        }
+        jogador1.dir = 8;
     }
     if (e.keyCode === 87) {
-        if (jogador1.py > area_tela.iy) {
-            jogador1.py -= 8;
-        }
+        jogador1.dir = -8;
     }
-    console.log('jogador1.py:', jogador1.py);
 });
+
+function Move_player() {
+    jogador1.py += jogador1.dir;
+}
 
 function Move_Ball() {
     bolinha.px += bolinha.dir;
@@ -94,6 +94,7 @@ function Main() {
     container.clearRect(0, 0, 430, 280);
     Draw();
     Move_Ball();
+    Move_player();
 }
 
 setInterval(Main, 20);
