@@ -12,8 +12,9 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 51. Criando um container com getContext("2d")
+ * ············ Aula 52. Desenhando com fillRect()
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
 let container = canvas.getContext('2d');
+let jogador1 = container.fillRect(20, 90, 15, 100); // <canvas id="canvas" width="430" height="280"></canvas>
