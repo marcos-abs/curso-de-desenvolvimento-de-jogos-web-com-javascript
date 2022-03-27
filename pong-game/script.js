@@ -12,13 +12,20 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 54. Trabalhando com textos
+ * ············ Aula 55. Organizando os valores
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
 let container = canvas.getContext('2d');
 container.fillStyle = '#8b8b8b';
-let jogador1 = container.fillRect(20, 90, 15, 100); // <canvas id="canvas" width="430" height="280"></canvas>
+// let jogador1 = container.fillRect(20, 90, 15, 100); // <canvas id="canvas" width="430" height="280"></canvas>
+let jogador1 = {
+    px: 20,
+    py: 90,
+    tx: 15,
+    ty: 100,
+};
+
 let jogador2 = container.fillRect(400, 90, 15, 100); // <canvas id="canvas" width="430" height="280"></canvas>
 let bolinha = container.fillRect(430 / 2 - 7.5, 280 / 2 - 7.5, 15, 15);
 
