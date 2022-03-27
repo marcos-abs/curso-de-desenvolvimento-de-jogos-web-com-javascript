@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 57. Movendo a bolinha
+ * ············ Aula 58. Alterando a direção da bolinha
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -21,7 +21,7 @@ container.fillStyle = '#8b8b8b';
 
 // let jogador1 = container.fillRect(20, 90, 15, 100); // <canvas id="canvas" width="430" height="280"></canvas>
 let jogador1 = {
-    px: 20,
+    px: 10,
     py: 90,
     tx: 15,
     ty: 100,
@@ -29,17 +29,10 @@ let jogador1 = {
 
 // let jogador2 = container.fillRect(400, 90, 15, 100); // <canvas id="canvas" width="430" height="280"></canvas>
 let jogador2 = {
-    px: 400,
+    px: 405,
     py: 90,
     tx: 15,
     ty: 100,
-};
-// let bolinha = container.fillRect(430 / 2 - 7.5, 280 / 2 - 7.5, 15, 15);
-let bolinha = {
-    px: 430 / 2 - 7.5,
-    py: 280 / 2 - 7.5,
-    tx: 15,
-    ty: 15,
 };
 
 let area_tela = {
@@ -49,13 +42,26 @@ let area_tela = {
     ty: 280,
 };
 
+// let bolinha = container.fillRect(430 / 2 - 7.5, 280 / 2 - 7.5, 15, 15);
+let bolinha = {
+    px: area_tela.tx / 2 - 7.5,
+    py: area_tela.ty / 2 - 7.5,
+    tx: 15,
+    ty: 15,
+    dir: 8,
+};
+
 container.font = '20px Arial';
 let pts1 = 0;
 let pts2 = 0;
 
 function Move_Ball() {
-    if (bolinha.px < area_tela.tx - bolinha.tx) {
-        bolinha.px += 8;
+    bolinha.px += bolinha.dir;
+    if (
+        bolinha.px > area_tela.tx - (jogador1.tx + jogador1.px) ||
+        bolinha.px < area_tela.ix + (jogador1.tx + jogador1.px)
+    ) {
+        bolinha.dir *= -1;
     }
 }
 
