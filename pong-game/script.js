@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 64. Colisão com jogador 1
+ * ············ Aula 65. Colisão com jogador 2
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -34,6 +34,7 @@ let jogador2 = {
     py: 90,
     tx: 15,
     ty: 100,
+    dir: 0,
 };
 
 let area_tela = {
@@ -66,20 +67,35 @@ document.addEventListener('keydown', function (e) {
     if (e.keyCode === 87) {
         jogador1.dir = -8;
     }
+    if (e.keyCode === 40) {
+        jogador2.dir = 8;
+    }
+    if (e.keyCode === 38) {
+        jogador2.dir = -8;
+    }
 });
 
 document.addEventListener('keyup', function (e) {
     if (e.keyCode === 83 || e.keyCode === 87) {
         jogador1.dir = 0;
     }
+    if (e.keyCode === 38 || e.keyCode === 40) {
+        jogador2.dir = 0;
+    }
 });
 
 function Move_player() {
     jogador1.py += jogador1.dir;
+    jogador2.py += jogador2.dir;
     if (jogador1.py < area_tela.iy) {
         jogador1.py = area_tela.iy;
     } else if (jogador1.py > area_tela.ty - jogador1.ty) {
         jogador1.py = area_tela.ty - jogador1.ty;
+    }
+    if (jogador2.py < area_tela.iy) {
+        jogador2.py = area_tela.iy;
+    } else if (jogador2.py > area_tela.ty - jogador2.ty) {
+        jogador2.py = area_tela.ty - jogador2.ty;
     }
 }
 
@@ -91,6 +107,12 @@ function Move_Ball() {
         bolinha.py + bolinha.ty >= jogador1.py &&
         bolinha.py <= jogador1.py + jogador1.ty &&
         bolinha.px <= jogador1.px + jogador1.tx
+    ) {
+        bolinha.dir *= -1;
+    } else if (
+        bolinha.py + bolinha.ty >= jogador2.py &&
+        bolinha.py <= jogador2.py + jogador2.ty &&
+        bolinha.px >= jogador2.px - jogador2.tx
     ) {
         bolinha.dir *= -1;
     }
