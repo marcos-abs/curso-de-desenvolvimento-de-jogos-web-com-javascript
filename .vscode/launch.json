@@ -1,0 +1,12 @@
+{
+    "name": "Launch Firefox",
+    "type": "firefox",
+    "request": "launch",
+    "url": "http://localhost:3000",
+    "pathMappings": [
+        {
+            "url": "http://localhost:3000/projeto3/",
+            "path": "${workspaceFolder}/"
+        }
+    ]
+}
