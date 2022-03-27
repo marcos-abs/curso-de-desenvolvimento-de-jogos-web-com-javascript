@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 62. Parando de mover, ao soltar a tecla
+ * ············ Aula 63. Criando limits
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -76,6 +76,11 @@ document.addEventListener('keyup', function (e) {
 
 function Move_player() {
     jogador1.py += jogador1.dir;
+    if (jogador1.py < area_tela.iy) {
+        jogador1.py = area_tela.iy;
+    } else if (jogador1.py > area_tela.ty - jogador1.ty) {
+        jogador1.py = area_tela.ty - jogador1.ty;
+    }
 }
 
 function Move_Ball() {
