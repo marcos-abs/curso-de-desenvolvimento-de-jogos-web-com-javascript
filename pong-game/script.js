@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 58. Alterando a direção da bolinha
+ * ············ Aula 59. Eventos
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -54,6 +54,10 @@ let bolinha = {
 container.font = '20px Arial';
 let pts1 = 0;
 let pts2 = 0;
+
+document.addEventListener('keydown', function () {
+    jogador1.py += 8;
+});
 
 function Move_Ball() {
     bolinha.px += bolinha.dir;
