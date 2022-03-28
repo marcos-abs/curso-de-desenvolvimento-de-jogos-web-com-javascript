@@ -15,3 +15,17 @@
  * ············ Aula 72. Base para o projeto
  * *****
  */
+
+let canvas = document.getElementById('canvas').getContext('2d');
+
+function draw() {}
+
+function update() {}
+
+function main() {
+    canvas.clearRect(0, 0, 1280, 720);
+    update();
+    draw();
+}
+
+setInterval(main, 10);
