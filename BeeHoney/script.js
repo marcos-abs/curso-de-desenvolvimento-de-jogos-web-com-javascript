@@ -12,25 +12,34 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 76. Introdução as classes
+ * ············ Aula 77. Desenhando Objs na tela
  * *****
  */
 
 let canvas = document.getElementById('canvas').getContext('2d');
 
 class Obj {
-    constructor(x, y, width, height) {
+    constructor(x, y, width, height, color) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.color = color;
+    }
+
+    draw() {
+        canvas.fillStyle = this.color;
+        canvas.fillRect(this.x, this.y, this.width, this.height);
     }
 }
 
-let bee = new Obj(0, 0, 100, 100);
-let spider = new Obj(100, 100, 100, 100);
+let bee = new Obj(0, 0, 100, 100, 'yellow');
+let spider = new Obj(100, 100, 100, 100, 'black');
 
-function draw() {}
+function draw() {
+    bee.draw();
+    spider.draw();
+}
 
 function update() {}
 
