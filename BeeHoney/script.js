@@ -6,7 +6,7 @@
  * File Created: Monday, 28 March 2022 14:50:19
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Monday, 28 March 2022 14:50:21
+ * Last Modified: Monday, 28 March 2022 15:27:08
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
@@ -23,7 +23,7 @@ function draw() {}
 function update() {}
 
 function main() {
-    canvas.clearRect(0, 0, 1280, 720);
+    canvas.clearRect(0, 0, 430, 280);
     update();
     draw();
 }
