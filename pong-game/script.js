@@ -6,17 +6,19 @@
  * File Created: Sunday, 27 March 2022 09:51:13
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Sunday, 27 March 2022 09:51:15
+ * Last Modified: Sunday, 27 March 2022 18:06:58
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 66. Marcando pontos
+ * ············ 67. Mudando a direção do eixo Y da bolinha
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
 let container = canvas.getContext('2d');
+let jogando = true;
+
 container.fillStyle = '#8b8b8b';
 
 // let jogador1 = container.fillRect(20, 90, 15, 100); // <canvas id="canvas" width="430" height="280"></canvas>
@@ -50,7 +52,8 @@ let bolinha = {
     py: area_tela.ty / 2 - 7.5,
     tx: 15,
     ty: 15,
-    dir: 8,
+    dirx: 8,
+    diry: 2,
 };
 
 container.font = '20px Arial';
@@ -74,6 +77,9 @@ document.addEventListener('keydown', function (e) {
     if (e.keyCode === 38) {
         jogador2.dir = -8;
     }
+    if (e.keyCode === 88) {
+        jogando = false;
+    }
 });
 
 document.addEventListener('keyup', function (e) {
@@ -82,6 +88,9 @@ document.addEventListener('keyup', function (e) {
     }
     if (e.keyCode === 38 || e.keyCode === 40) {
         jogador2.dir = 0;
+    }
+    if (e.keyCode === 88) {
+        jogando = false;
     }
 });
 
@@ -101,20 +110,28 @@ function Move_player() {
 }
 
 function Move_Ball() {
-    bolinha.px += bolinha.dir;
+    bolinha.px += bolinha.dirx;
+    bolinha.py += bolinha.diry;
+
+    if (
+        bolinha.py < area_tela.iy + bolinha.ty ||
+        bolinha.py > area_tela.ty - bolinha.ty
+    ) {
+        bolinha.diry *= -1;
+    }
 }
 
 function Points() {
     if (bolinha.px < area_tela.ix - delay) {
         bolinha.px = area_tela.tx / 2 - 7.5;
         bolinha.py = area_tela.ty / 2 - 7.5;
-        bolinha.dir *= -1;
+        bolinha.dirx *= -1;
         pts2 += 1;
     }
     if (bolinha.px > area_tela.tx + delay) {
         bolinha.px = area_tela.tx / 2 - 7.5;
         bolinha.py = area_tela.ty / 2 - 7.5;
-        bolinha.dir *= -1;
+        bolinha.dirx *= -1;
         pts1 += 1;
     }
 }
@@ -125,13 +142,13 @@ function Collision_Ball() {
         bolinha.py <= jogador1.py + jogador1.ty &&
         bolinha.px <= jogador1.px + jogador1.tx
     ) {
-        bolinha.dir *= -1;
+        bolinha.dirx *= -1;
     } else if (
         bolinha.py + bolinha.ty >= jogador2.py &&
         bolinha.py <= jogador2.py + jogador2.ty &&
         bolinha.px >= jogador2.px - jogador2.tx
     ) {
-        bolinha.dir *= -1;
+        bolinha.dirx *= -1;
     }
 }
 
@@ -144,12 +161,17 @@ function Draw() {
 }
 
 function Main() {
-    container.clearRect(0, 0, 430, 280);
-    Draw();
-    Move_Ball();
-    Collision_Ball();
-    Points();
-    Move_player();
+    if (jogando) {
+        container.clearRect(0, 0, 430, 280);
+        Draw();
+        Move_Ball();
+        Collision_Ball();
+        Points();
+        Move_player();
+    } else {
+        clearInterval(refreshIntervalId);
+    }
+    console.log('jogando: ', jogando);
 }
 
-setInterval(Main, 20);
+let refreshIntervalId = setInterval(Main, 20);

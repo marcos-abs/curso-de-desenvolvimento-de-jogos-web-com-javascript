@@ -1,4 +1,6 @@
 Alast
+dirx
+diry
 esversion
 heroi
 Marcant
