@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ 68. Movendo o player 2
+ * ············ 69. Condição de vitória
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -45,12 +45,20 @@ let area_tela = {
     tx: 430,
     ty: 280,
     placar_j1: {
-        px: 0,
-        py: 0,
+        px: 45,
+        py: 50,
     },
     placar_j2: {
-        px: 0,
-        py: 0,
+        px: 290,
+        py: 50,
+    },
+    final_j1: {
+        px: 45,
+        py: 150,
+    },
+    final_j2: {
+        px: 250,
+        py: 150,
     },
 };
 
@@ -117,16 +125,15 @@ function Move_player() {
     }
 }
 
+function Game_Over() {
+    if (pts1 > 2 || pts2 > 2) {
+        jogando = false;
+    }
+}
+
 function Move_Ball() {
     bolinha.px += bolinha.dirx;
     bolinha.py += bolinha.diry;
-
-    if (
-        bolinha.py < area_tela.iy + bolinha.ty ||
-        bolinha.py > area_tela.ty - bolinha.ty
-    ) {
-        bolinha.diry *= -1;
-    }
 }
 
 function Points() {
@@ -158,25 +165,60 @@ function Collision_Ball() {
     ) {
         bolinha.dirx *= -1;
     }
+    if (
+        bolinha.py < area_tela.iy + bolinha.ty ||
+        bolinha.py > area_tela.ty - bolinha.ty
+    ) {
+        bolinha.diry *= -1;
+    }
 }
 
 function Draw() {
     container.fillRect(jogador1.px, jogador1.py, jogador1.tx, jogador1.ty);
     container.fillRect(jogador2.px, jogador2.py, jogador2.tx, jogador2.ty);
     container.fillRect(bolinha.px, bolinha.py, bolinha.tx, bolinha.ty);
-    container.fillText('Score 1: ' + pts1, 45, 50);
-    container.fillText('Score 2: ' + pts2, 290, 50);
+    container.fillText(
+        'Score 1: ' + pts1,
+        area_tela.placar_j1.px,
+        area_tela.placar_j1.py,
+    );
+    container.fillText(
+        'Score 2: ' + pts2,
+        area_tela.placar_j2.px,
+        area_tela.placar_j2.py,
+    );
+}
+
+function DrawWin() {
+    LimparTela();
+    container.font = '30px Arial';
+    container.fillText(
+        'Score 1: ' + pts1,
+        area_tela.final_j1.px,
+        area_tela.final_j1.py,
+    );
+    container.fillText(
+        'Score 2: ' + pts2,
+        area_tela.final_j2.px,
+        area_tela.final_j2.py,
+    );
+}
+
+function LimparTela() {
+    container.clearRect(area_tela.ix, area_tela.iy, area_tela.tx, area_tela.ty);
 }
 
 function Main() {
     if (jogando) {
-        container.clearRect(0, 0, 430, 280);
+        LimparTela();
         Draw();
         Move_Ball();
         Collision_Ball();
         Points();
         Move_player();
+        Game_Over();
     } else {
+        DrawWin();
         clearInterval(refreshIntervalId);
     }
     console.log('jogando: ', jogando);
