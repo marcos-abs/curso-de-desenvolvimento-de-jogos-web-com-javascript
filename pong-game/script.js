@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ 67. Mudando a direção do eixo Y da bolinha
+ * ············ 68. Movendo o player 2
  * *****
  */
 let canvas = document.getElementById('canvas'); // integração com o HTML5
@@ -44,6 +44,14 @@ let area_tela = {
     iy: 0,
     tx: 430,
     ty: 280,
+    placar_j1: {
+        px: 0,
+        py: 0,
+    },
+    placar_j2: {
+        px: 0,
+        py: 0,
+    },
 };
 
 // let bolinha = container.fillRect(430 / 2 - 7.5, 280 / 2 - 7.5, 15, 15);
