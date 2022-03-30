@@ -12,14 +12,14 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 80. Movimentando a abelhinha
+ * ············ Aula 81. Classes e extensões
  * *****
  */
 
 let canvas = document.getElementById('canvas').getContext('2d');
 
 let bee = new Bee(150, 150, 50, 50, 'yellow');
-let spider = new Obj(50, 50, 50, 50, 'black');
+let spider = new Spider(50, 50, 50, 50, 'black');
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'a') {
@@ -46,6 +46,7 @@ function draw() {
 
 function update() {
     bee.move();
+    spider.move();
 }
 
 function main() {

@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 78. Organizando o projeto
+ * ············ Aula 82. Movendo a aranha
  * *****
  */
 
@@ -36,5 +36,14 @@ class Bee extends Obj {
 
     move() {
         this.x += this.dir;
+    }
+}
+
+class Spider extends Obj {
+    move() {
+        this.y += 2;
+        if (this.y > 280) {
+            this.y = -50;
+        }
     }
 }
