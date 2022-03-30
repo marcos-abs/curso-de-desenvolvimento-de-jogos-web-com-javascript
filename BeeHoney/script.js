@@ -18,24 +18,24 @@
 
 let canvas = document.getElementById('canvas').getContext('2d');
 
-let bee = new Obj(150, 150, 50, 50, 'yellow');
+let bee = new Bee(150, 150, 50, 50, 'yellow');
 let spider = new Obj(50, 50, 50, 50, 'black');
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'a') {
-        bee.x -= 5;
+        bee.dir -= 1;
     }
     if (event.key === 'd') {
-        bee.x += 5;
+        bee.dir += 1;
     }
 });
 
 document.addEventListener('keyup', function (event) {
     if (event.key === 'a') {
-        bee.x -= 5;
+        bee.dir = 0;
     }
     if (event.key === 'd') {
-        bee.x += 5;
+        bee.dir = 0;
     }
 });
 
@@ -44,7 +44,9 @@ function draw() {
     spider.draw();
 }
 
-function update() {}
+function update() {
+    bee.move();
+}
 
 function main() {
     canvas.clearRect(0, 0, 430, 280);

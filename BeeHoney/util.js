@@ -30,3 +30,11 @@ class Obj {
         canvas.fillRect(this.x, this.y, this.width, this.height);
     }
 }
+
+class Bee extends Obj {
+    dir = 0; // jshint ignore:line
+
+    move() {
+        this.x += this.dir;
+    }
+}
