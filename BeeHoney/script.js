@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 78. Organizando o projeto
+ * ············ Aula 79. Chamando os eventos no projeto
  * *****
  */
 
@@ -20,12 +20,22 @@ let canvas = document.getElementById('canvas').getContext('2d');
 
 let bee = new Obj(150, 150, 50, 50, 'yellow');
 let spider = new Obj(50, 50, 50, 50, 'black');
-let spider2 = new Obj(200, 0, 50, 50, 'orange');
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'a') {
+        console.log('Olá Alunos!');
+    }
+});
+
+document.addEventListener('keyup', function (event) {
+    if (event.key === 'a') {
+        console.log('Tchau Alunos.');
+    }
+});
 
 function draw() {
     bee.draw();
     spider.draw();
-    spider2.draw();
 }
 
 function update() {}
