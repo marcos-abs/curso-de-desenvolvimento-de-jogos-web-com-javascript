@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 79. Chamando os eventos no projeto
+ * ············ Aula 80. Movimentando a abelhinha
  * *****
  */
 
@@ -23,13 +23,19 @@ let spider = new Obj(50, 50, 50, 50, 'black');
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'a') {
-        console.log('Olá Alunos!');
+        bee.x -= 5;
+    }
+    if (event.key === 'd') {
+        bee.x += 5;
     }
 });
 
 document.addEventListener('keyup', function (event) {
     if (event.key === 'a') {
-        console.log('Tchau Alunos.');
+        bee.x -= 5;
+    }
+    if (event.key === 'd') {
+        bee.x += 5;
     }
 });
 
