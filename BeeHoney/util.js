@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 83. Randomizar posições da aranha
+ * ············ Aula 85. Adicionando o BG
  * *****
  */
 
@@ -30,7 +30,7 @@ class Obj {
         // canvas.fillRect(this.x, this.y, this.width, this.height);
         let img = new Image();
         img.src = this.color;
-        canvas.drawImage(img, this.x, this.y);
+        canvas.drawImage(img, this.x, this.y, this.width, this.height);
     }
 }
 

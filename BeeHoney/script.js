@@ -12,12 +12,13 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 81. Classes e extensões
+ * ············ Aula 85. Adicionando o BG
  * *****
  */
 
 let canvas = document.getElementById('canvas').getContext('2d');
 
+let bg = new Obj(0, 0, 430, 280, 'assets/bg.png');
 let bee = new Bee(150, 150, 50, 50, 'assets/bee1.png');
 let spider = new Spider(50, 50, 50, 50, 'assets/spider1.png');
 
@@ -40,6 +41,7 @@ document.addEventListener('keyup', function (event) {
 });
 
 function draw() {
+    bg.draw();
     bee.draw();
     spider.draw();
 }
