@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 82. Movendo a aranha
+ * ············ Aula 83. Randomizar posições da aranha
  * *****
  */
 
@@ -44,6 +44,7 @@ class Spider extends Obj {
         this.y += 2;
         if (this.y > 280) {
             this.y = -50;
+            this.x = Math.random() * (380 - 0);
         }
     }
 }
