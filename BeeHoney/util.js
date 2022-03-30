@@ -26,8 +26,11 @@ class Obj {
     }
 
     draw() {
-        canvas.fillStyle = this.color;
-        canvas.fillRect(this.x, this.y, this.width, this.height);
+        // canvas.fillStyle = this.color;
+        // canvas.fillRect(this.x, this.y, this.width, this.height);
+        let img = new Image();
+        img.src = this.color;
+        canvas.drawImage(img, this.x, this.y);
     }
 }
 

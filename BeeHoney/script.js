@@ -18,8 +18,8 @@
 
 let canvas = document.getElementById('canvas').getContext('2d');
 
-let bee = new Bee(150, 150, 50, 50, 'yellow');
-let spider = new Spider(50, 50, 50, 50, 'black');
+let bee = new Bee(150, 150, 50, 50, 'assets/bee1.png');
+let spider = new Spider(50, 50, 50, 50, 'assets/spider1.png');
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'a') {
