@@ -27,6 +27,7 @@ const speed = 3;
 let lives = 5;
 let pts = 0;
 let jogando = true;
+let exitGame = false;
 
 let canvas = document.getElementById('canvas').getContext('2d');
 
@@ -52,21 +53,33 @@ let textPoints = new Text();
 let textLives = new Text();
 let textResult = new Text();
 
-document.addEventListener('keydown', function (event) {
-    if (event.key === 'a') {
+document.addEventListener('keydown', function myListener(event) {
+    if (event.key === 'a' || event.key === 'A') {
         bee.dir -= 3;
     }
-    if (event.key === 'd') {
+    if (event.key === 'd' || event.key === 'D') {
         bee.dir += 3;
+    }
+    if (event.key === 'x' || event.key === 'X') {
+        jogando = false;
+    }
+    if (exitGame) {
+        document.removeEventListener('keydown', myListener);
     }
 });
 
-document.addEventListener('keyup', function (event) {
-    if (event.key === 'a') {
+document.addEventListener('keyup', function myListener(event) {
+    if (event.key === 'a' || event.key === 'A') {
         bee.dir = 0;
     }
-    if (event.key === 'd') {
+    if (event.key === 'd' || event.key === 'D') {
         bee.dir = 0;
+    }
+    if (event.key === 'x' || event.key === 'X') {
+        exitGame = true;
+    }
+    if (exitGame) {
+        document.removeEventListener('keyup', myListener);
     }
 });
 
@@ -79,6 +92,9 @@ function collides() {
         flower.respaw();
         pts += 1;
     }
+}
+
+function gameOver() {
     if (lives < 1) {
         lives = 0;
         draw();
@@ -89,33 +105,46 @@ function collides() {
 function draw() {
     bg.draw();
     bg2.draw();
-    bee.draw();
-    spider.draw();
-    flower.draw();
-    textPoints.draw('pontos: ' + pts, 15, 30, 'gray');
-    textLives.draw('vidas: ' + lives, 315, 30, 'orange');
+    if (jogando) {
+        bee.draw();
+        spider.draw();
+        flower.draw();
+        textPoints.draw('pontos: ' + pts, 15, 30, 'gray');
+        textLives.draw('vidas: ' + lives, 315, 30, 'orange');
+    } else {
+        textResult.draw('Game Over', 95, 140, 'orange', '50px Arial');
+        textResult.draw('Pontos: ' + pts, 150, 190, 'gray', '30px Arial');
+        textResult.draw(
+            'Press <X> para finish the game.',
+            80,
+            230,
+            'green',
+            '20px Arial',
+        );
+    }
 }
 
 function update() {
     bg.move(speed, areaTela.ty, areaTela.iy);
     bg2.move(speed, areaTela.iy, areaTela.ty * -1);
-    bee.move();
-    bee.animation('bee', 4);
-    spider.move();
-    spider.animation('spider', 4);
-    flower.move();
-    flower.animation('flower', 2);
+    if (jogando) {
+        bee.move();
+        bee.animation('bee', 4);
+        spider.move();
+        spider.animation('spider', 4);
+        flower.move();
+        flower.animation('flower', 2);
+    }
 }
 
 function main() {
     canvas.clearRect(areaTela.ix, areaTela.iy, areaTela.tx, areaTela.ty);
-    if (jogando) {
+    if (!exitGame) {
         update();
         draw();
         collides();
+        gameOver();
     } else {
-        textResult.draw('Game Over', 95, 140, 'gray', '50px Arial');
-        textResult.draw('Pontos: ' + pts, 150, 190, 'green', '30px Arial');
         clearInterval(refreshIntervalId);
     }
 }
