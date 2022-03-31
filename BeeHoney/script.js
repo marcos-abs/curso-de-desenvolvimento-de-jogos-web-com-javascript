@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 91. Textos na tela
+ * ············ Aula 92. Colisões
  * *****
  */
 
@@ -83,6 +83,9 @@ function update() {
     bg2.move(speed, areaTela.iy, areaTela.ty * -1);
     bee.move();
     bee.animation('bee', 4);
+    if (bee.collide(spider)) {
+        console.log('Colidiu');
+    }
     spider.move();
     spider.animation('spider', 4);
     flower.move();

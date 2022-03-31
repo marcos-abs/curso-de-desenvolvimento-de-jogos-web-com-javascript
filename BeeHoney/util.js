@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 91. Textos na tela
+ * ············ Aula 92. Colisões
  * *****
  */
 
@@ -54,6 +54,19 @@ class Bee extends Obj {
 
     move() {
         this.x += this.dir;
+    }
+
+    collide(obj) {
+        if (
+            this.x < obj.x + obj.width &&
+            this.x + this.width > obj.x &&
+            this.y < obj.y + obj.height &&
+            this.y + this.height > obj.y
+        ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
