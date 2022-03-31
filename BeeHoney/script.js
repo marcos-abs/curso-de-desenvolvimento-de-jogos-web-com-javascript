@@ -73,6 +73,7 @@ function update() {
     bg.move(speed, areaTela.ty, areaTela.iy);
     bg2.move(speed, areaTela.iy, areaTela.ty * -1);
     bee.move();
+    bee.animation();
     spider.move();
 }
 

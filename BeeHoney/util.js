@@ -36,9 +36,23 @@ class Obj {
 
 class Bee extends Obj {
     dir = 0; // jshint ignore:line
+    frame = 1;
+    timer = 0;
 
     move() {
         this.x += this.dir;
+    }
+
+    animation() {
+        this.timer += 1;
+        if (this.timer > 10) {
+            this.timer = 0;
+            this.frame += 1;
+        }
+        if (this.frame > 4) {
+            this.frame = 1;
+        }
+        this.color = 'assets/bee' + this.frame + '.png';
     }
 }
 
