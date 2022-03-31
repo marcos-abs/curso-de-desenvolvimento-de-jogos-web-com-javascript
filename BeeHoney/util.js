@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 86. Movendo o BG
+ * ············ Aula 88. Animando a aranha
  * *****
  */
 
@@ -57,12 +57,25 @@ class Bee extends Obj {
 }
 
 class Spider extends Obj {
+    frame = 1; // jshint ignore:line
+    timer = 0;
     move() {
         this.y += 2;
         if (this.y > 280) {
             this.y = -50;
             this.x = Math.random() * (380 - 0);
         }
+    }
+    animation() {
+        this.timer += 1;
+        if (this.timer > 10) {
+            this.timer = 0;
+            this.frame += 1;
+        }
+        if (this.frame > 4) {
+            this.frame = 1;
+        }
+        this.color = 'assets/spider' + this.frame + '.png';
     }
 }
 

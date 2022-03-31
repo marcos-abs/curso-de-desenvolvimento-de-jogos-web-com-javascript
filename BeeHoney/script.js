@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 86. Movendo o BG
+ * ············ Aula 88. Animando a aranha
  * *****
  */
 
@@ -75,6 +75,7 @@ function update() {
     bee.move();
     bee.animation();
     spider.move();
+    spider.animation();
 }
 
 function main() {
