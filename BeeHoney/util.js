@@ -54,6 +54,14 @@ class Bee extends Obj {
 
     move() {
         this.x += this.dir;
+        if (this.x + this.width > areaTela.tx) {
+            this.dir = 0;
+            this.x = areaTela.tx - this.width;
+        }
+        if (this.x < areaTela.ix) {
+            this.dir = 0;
+            this.x = areaTela.ix;
+        }
     }
 
     collide(obj) {
@@ -74,9 +82,13 @@ class Spider extends Obj {
     move() {
         this.y += 2;
         if (this.y > 280) {
-            this.y = -50;
-            this.x = Math.random() * (380 - 0);
+            this.respaw();
         }
+    }
+
+    respaw() {
+        this.y = -50;
+        this.x = Math.random() * (380 - 0);
     }
 }
 
@@ -114,8 +126,8 @@ class Text {
      * @param {*} py idem ao anterior, contudo no eixo y
      * @memberof Text
      */
-    draw(text, px, py, color) {
-        canvas.font = '30px Arial';
+    draw(text, px, py, color, font = '30px Arial') {
+        canvas.font = font;
         canvas.fillStyle = color;
         canvas.fillText(text, px, py);
     }

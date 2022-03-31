@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 92. Colisões
+ * ············ Aula 93. Colisão com aranha
  * *****
  */
 
@@ -26,6 +26,7 @@ const areaTela = {
 const speed = 3;
 let lives = 5;
 let pts = 0;
+let jogando = true;
 
 let canvas = document.getElementById('canvas').getContext('2d');
 
@@ -49,6 +50,7 @@ let flower = new Flower(30, 30, 30, 30, 'assets/flower1.png');
 
 let textPoints = new Text();
 let textLives = new Text();
+let textResult = new Text();
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'a') {
@@ -68,6 +70,18 @@ document.addEventListener('keyup', function (event) {
     }
 });
 
+function collides() {
+    if (bee.collide(spider)) {
+        spider.respaw();
+        lives -= 1;
+    }
+    if (lives < 1) {
+        lives = 0;
+        draw();
+        jogando = false;
+    }
+}
+
 function draw() {
     bg.draw();
     bg2.draw();
@@ -83,9 +97,6 @@ function update() {
     bg2.move(speed, areaTela.iy, areaTela.ty * -1);
     bee.move();
     bee.animation('bee', 4);
-    if (bee.collide(spider)) {
-        console.log('Colidiu');
-    }
     spider.move();
     spider.animation('spider', 4);
     flower.move();
@@ -94,8 +105,15 @@ function update() {
 
 function main() {
     canvas.clearRect(areaTela.ix, areaTela.iy, areaTela.tx, areaTela.ty);
-    update();
-    draw();
+    if (jogando) {
+        update();
+        draw();
+        collides();
+    } else {
+        textResult.draw('Game Over', 95, 140, 'gray', '50px Arial');
+        textResult.draw('Pontos: ' + pts, 150, 190, 'green', '30px Arial');
+        clearInterval(refreshIntervalId);
+    }
 }
 
-setInterval(main, 10);
+let refreshIntervalId = setInterval(main, 10);
