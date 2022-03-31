@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 85. Adicionando o BG
+ * ············ Aula 86. Movendo o BG
  * *****
  */
 
@@ -48,6 +48,29 @@ class Spider extends Obj {
         if (this.y > 280) {
             this.y = -50;
             this.x = Math.random() * (380 - 0);
+        }
+    }
+}
+
+/**
+ * Classe de manipulação do background do jogo
+ *
+ * @class Bg
+ * @extends {Obj}
+ */
+class Bg extends Obj {
+    /**
+     * Método para movimentar o background durante o jogo
+     *
+     * @param {int} speed   => velocidade do movimento do background
+     * @param {int} limit   => limite do eixo y
+     * @param {int} pos     => posição inicial do background
+     * @memberof Bg
+     */
+    move(speed, limit, pos) {
+        this.y += speed;
+        if (this.y > limit) {
+            this.y = pos;
         }
     }
 }

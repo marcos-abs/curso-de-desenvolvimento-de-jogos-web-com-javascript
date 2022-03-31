@@ -12,13 +12,35 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 85. Adicionando o BG
+ * ············ Aula 86. Movendo o BG
  * *****
  */
 
+const areaTela = {
+    ix: 0,
+    iy: 0,
+    tx: 430,
+    ty: 280,
+};
+
+const speed = 3;
+
 let canvas = document.getElementById('canvas').getContext('2d');
 
-let bg = new Obj(0, 0, 430, 280, 'assets/bg.png');
+let bg = new Bg(
+    areaTela.ix,
+    areaTela.iy,
+    areaTela.tx,
+    areaTela.ty,
+    'assets/bg.png',
+);
+let bg2 = new Bg(
+    areaTela.ix,
+    areaTela.ty * -1,
+    areaTela.tx,
+    areaTela.ty,
+    'assets/bg.png',
+);
 let bee = new Bee(150, 150, 50, 50, 'assets/bee1.png');
 let spider = new Spider(50, 50, 50, 50, 'assets/spider1.png');
 
@@ -42,17 +64,20 @@ document.addEventListener('keyup', function (event) {
 
 function draw() {
     bg.draw();
+    bg2.draw();
     bee.draw();
     spider.draw();
 }
 
 function update() {
+    bg.move(speed, areaTela.ty, areaTela.iy);
+    bg2.move(speed, areaTela.iy, areaTela.ty * -1);
     bee.move();
     spider.move();
 }
 
 function main() {
-    canvas.clearRect(0, 0, 430, 280);
+    canvas.clearRect(areaTela.ix, areaTela.iy, areaTela.tx, areaTela.ty);
     update();
     draw();
 }
