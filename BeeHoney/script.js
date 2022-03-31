@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 93. Colisão com aranha
+ * ············ Aula 94. Colisão com a flor
  * *****
  */
 
@@ -54,10 +54,10 @@ let textResult = new Text();
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'a') {
-        bee.dir -= 1;
+        bee.dir -= 3;
     }
     if (event.key === 'd') {
-        bee.dir += 1;
+        bee.dir += 3;
     }
 });
 
@@ -74,6 +74,10 @@ function collides() {
     if (bee.collide(spider)) {
         spider.respaw();
         lives -= 1;
+    }
+    if (bee.collide(flower)) {
+        flower.respaw();
+        pts += 1;
     }
     if (lives < 1) {
         lives = 0;

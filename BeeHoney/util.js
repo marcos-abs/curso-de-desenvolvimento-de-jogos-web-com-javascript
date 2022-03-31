@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 92. Colisões
+ * ············ Aula 94. Colisão com a flor
  * *****
  */
 
@@ -87,7 +87,7 @@ class Spider extends Obj {
     }
 
     respaw() {
-        this.y = -50;
+        this.y = -100;
         this.x = Math.random() * (380 - 0);
     }
 }
