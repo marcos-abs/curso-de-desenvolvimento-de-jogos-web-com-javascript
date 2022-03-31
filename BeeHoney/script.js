@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 89. Deixando o Obj mais inteligente
+ * ············ Aula 90. Coletáveis
  * *****
  */
 
@@ -43,6 +43,7 @@ let bg2 = new Bg(
 );
 let bee = new Bee(150, 150, 50, 50, 'assets/bee1.png');
 let spider = new Spider(50, 50, 50, 50, 'assets/spider1.png');
+let flower = new Flower(30, 30, 30, 30, 'assets/flower1.png');
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'a') {
@@ -67,15 +68,18 @@ function draw() {
     bg2.draw();
     bee.draw();
     spider.draw();
+    flower.draw();
 }
 
 function update() {
     bg.move(speed, areaTela.ty, areaTela.iy);
     bg2.move(speed, areaTela.iy, areaTela.ty * -1);
     bee.move();
-    bee.animation('bee');
+    bee.animation('bee', 4);
     spider.move();
-    spider.animation('spider');
+    spider.animation('spider', 4);
+    flower.move();
+    flower.animation('flower', 2);
 }
 
 function main() {

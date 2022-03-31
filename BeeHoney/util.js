@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 89. Deixando o Obj mais inteligente
+ * ············ Aula 90. Coletáveis
  * *****
  */
 
@@ -36,13 +36,13 @@ class Obj {
         canvas.drawImage(img, this.x, this.y, this.width, this.height);
     }
 
-    animation(nome) {
+    animation(nome, quadros) {
         this.timer += 1;
         if (this.timer > 10) {
             this.timer = 0;
             this.frame += 1;
         }
-        if (this.frame > 4) {
+        if (this.frame > quadros) {
             this.frame = 1;
         }
         this.color = 'assets/' + nome + this.frame + '.png';
@@ -89,3 +89,5 @@ class Bg extends Obj {
         }
     }
 }
+
+class Flower extends Spider {}
