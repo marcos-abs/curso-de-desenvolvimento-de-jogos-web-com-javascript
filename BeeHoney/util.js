@@ -12,11 +12,14 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 88. Animando a aranha
+ * ············ Aula 89. Deixando o Obj mais inteligente
  * *****
  */
 
 class Obj {
+    frame = 1; // jshint ignore:line
+    timer = 0;
+
     constructor(x, y, width, height, color) {
         this.x = x;
         this.y = y;
@@ -32,18 +35,8 @@ class Obj {
         img.src = this.color;
         canvas.drawImage(img, this.x, this.y, this.width, this.height);
     }
-}
 
-class Bee extends Obj {
-    dir = 0; // jshint ignore:line
-    frame = 1;
-    timer = 0;
-
-    move() {
-        this.x += this.dir;
-    }
-
-    animation() {
+    animation(nome) {
         this.timer += 1;
         if (this.timer > 10) {
             this.timer = 0;
@@ -52,30 +45,25 @@ class Bee extends Obj {
         if (this.frame > 4) {
             this.frame = 1;
         }
-        this.color = 'assets/bee' + this.frame + '.png';
+        this.color = 'assets/' + nome + this.frame + '.png';
+    }
+}
+
+class Bee extends Obj {
+    dir = 0; // jshint ignore:line
+
+    move() {
+        this.x += this.dir;
     }
 }
 
 class Spider extends Obj {
-    frame = 1; // jshint ignore:line
-    timer = 0;
     move() {
         this.y += 2;
         if (this.y > 280) {
             this.y = -50;
             this.x = Math.random() * (380 - 0);
         }
-    }
-    animation() {
-        this.timer += 1;
-        if (this.timer > 10) {
-            this.timer = 0;
-            this.frame += 1;
-        }
-        if (this.frame > 4) {
-            this.frame = 1;
-        }
-        this.color = 'assets/spider' + this.frame + '.png';
     }
 }
 

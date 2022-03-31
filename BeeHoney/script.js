@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 88. Animando a aranha
+ * ············ Aula 89. Deixando o Obj mais inteligente
  * *****
  */
 
@@ -73,9 +73,9 @@ function update() {
     bg.move(speed, areaTela.ty, areaTela.iy);
     bg2.move(speed, areaTela.iy, areaTela.ty * -1);
     bee.move();
-    bee.animation();
+    bee.animation('bee');
     spider.move();
-    spider.animation();
+    spider.animation('spider');
 }
 
 function main() {
