@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 90. Coletáveis
+ * ············ Aula 91. Textos na tela
  * *****
  */
 
@@ -24,6 +24,8 @@ const areaTela = {
 };
 
 const speed = 3;
+let lives = 5;
+let pts = 0;
 
 let canvas = document.getElementById('canvas').getContext('2d');
 
@@ -44,6 +46,9 @@ let bg2 = new Bg(
 let bee = new Bee(150, 150, 50, 50, 'assets/bee1.png');
 let spider = new Spider(50, 50, 50, 50, 'assets/spider1.png');
 let flower = new Flower(30, 30, 30, 30, 'assets/flower1.png');
+
+let textPoints = new Text();
+let textLives = new Text();
 
 document.addEventListener('keydown', function (event) {
     if (event.key === 'a') {
@@ -69,6 +74,8 @@ function draw() {
     bee.draw();
     spider.draw();
     flower.draw();
+    textPoints.draw('pontos: ' + pts, 15, 30, 'gray');
+    textLives.draw('vidas: ' + lives, 315, 30, 'orange');
 }
 
 function update() {

@@ -3,5 +3,6 @@ dirx
 diry
 esversion
 heroi
+Lifes
 Marcant
 Onix

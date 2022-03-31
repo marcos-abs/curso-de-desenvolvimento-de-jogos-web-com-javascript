@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 90. Coletáveis
+ * ············ Aula 91. Textos na tela
  * *****
  */
 
@@ -91,3 +91,19 @@ class Bg extends Obj {
 }
 
 class Flower extends Spider {}
+
+class Text {
+    /**
+     * Acrescenta um texto a tela do jogo
+     *
+     * @param {*} text frase ou informação que será mostrada
+     * @param {*} px posição no eixo x inicial a informação que será mostrada
+     * @param {*} py idem ao anterior, contudo no eixo y
+     * @memberof Text
+     */
+    draw(text, px, py, color) {
+        canvas.font = '30px Arial';
+        canvas.fillStyle = color;
+        canvas.fillText(text, px, py);
+    }
+}
