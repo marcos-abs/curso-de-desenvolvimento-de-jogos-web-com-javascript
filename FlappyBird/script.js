@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 100. Background infinito
+ * ············ Aula 101. Chão Infinito (parallax)
  * *****
  */
 
@@ -69,10 +69,10 @@ function draw() {
 }
 
 function update() {
-    bg.move(2, -areaTela.tx, areaTela.ix);
-    bg2.move(2, areaTela.ix, areaTela.tx);
-    ground.move(5, -areaTerra.tx, areaTerra.ix);
-    ground2.move(5, areaTerra.ix, areaTerra.tx);
+    bg.move(1, -areaTela.tx, areaTela.ix);
+    bg2.move(1, areaTela.ix, areaTela.tx);
+    ground.move(3, -areaTerra.tx, areaTerra.ix);
+    ground2.move(3, areaTerra.ix, areaTerra.tx);
 }
 
 function clearScreen() {
@@ -83,6 +83,7 @@ function main() {
     clearScreen();
     draw();
     update();
+    requestAnimationFrame(main);
 }
 
-let refreshCanvas = setInterval(main, 100);
+main();
