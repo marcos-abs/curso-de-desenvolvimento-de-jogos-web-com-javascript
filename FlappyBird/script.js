@@ -23,6 +23,12 @@ const areaTela = {
     tx: 430,
     ty: 560,
 };
+const areaTerra = {
+    ix: 0,
+    iy: 396,
+    tx: 430,
+    ty: 164,
+};
 let bg = new Bg(
     areaTela.ix,
     areaTela.iy,
@@ -39,14 +45,34 @@ let bg2 = new Bg(
     'assets/images/sky.png',
 );
 
+let ground = new Ground(
+    areaTerra.ix,
+    areaTerra.iy,
+    areaTerra.tx,
+    areaTerra.ty,
+    'assets/images/ground.png',
+);
+
+let ground2 = new Ground(
+    areaTerra.tx,
+    areaTerra.iy,
+    areaTerra.tx,
+    areaTerra.ty,
+    'assets/images/ground.png',
+);
+
 function draw() {
     bg.draw();
     bg2.draw();
+    ground.draw();
+    ground2.draw();
 }
 
 function update() {
-    bg.move(5, -areaTela.tx, areaTela.ix);
-    bg2.move(5, areaTela.ix, areaTela.tx);
+    bg.move(2, -areaTela.tx, areaTela.ix);
+    bg2.move(2, areaTela.ix, areaTela.tx);
+    ground.move(5, -areaTerra.tx, areaTerra.ix);
+    ground2.move(5, areaTerra.ix, areaTerra.tx);
 }
 
 function clearScreen() {

@@ -39,3 +39,5 @@ class Bg extends Obj {
         }
     }
 }
+
+class Ground extends Bg {}
