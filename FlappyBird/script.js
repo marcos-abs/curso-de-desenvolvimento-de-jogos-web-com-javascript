@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 101. Chão Infinito (parallax)
+ * ············ Aula 102. Otimizando animações
  * *****
  */
 
@@ -28,6 +28,12 @@ const areaTerra = {
     iy: 396,
     tx: 430,
     ty: 164,
+};
+const areaBird = {
+    ix: 0,
+    iy: 250,
+    tx: 63,
+    ty: 51,
 };
 let bg = new Bg(
     areaTela.ix,
@@ -61,11 +67,20 @@ let ground2 = new Ground(
     'assets/images/ground.png',
 );
 
+let bird = new Bird(
+    areaBird.ix,
+    areaBird.iy,
+    areaBird.tx,
+    areaBird.ty,
+    'assets/images/bird0.png',
+);
+
 function draw() {
     bg.draw();
     bg2.draw();
     ground.draw();
     ground2.draw();
+    bird.draw();
 }
 
 function update() {
