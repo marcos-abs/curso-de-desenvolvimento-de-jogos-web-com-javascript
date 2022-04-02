@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 102. Otimizando animações
+ * ············ Aula 104. Animações
  * *****
  */
 
@@ -88,6 +88,7 @@ function update() {
     bg2.move(1, areaTela.ix, areaTela.tx);
     ground.move(3, -areaTerra.tx, areaTerra.ix);
     ground2.move(3, areaTerra.ix, areaTerra.tx);
+    bird.animation(10, 4, 'bird');
 }
 
 function clearScreen() {

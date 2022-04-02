@@ -16,6 +16,8 @@
  * *****
  */
 class Obj {
+    frame = 0; // jshint ignore:line
+    timer = 0;
     constructor(x, y, width, height, image) {
         this.x = x;
         this.y = y;
@@ -28,6 +30,22 @@ class Obj {
         let img = new Image();
         img.src = this.image;
         canvas.drawImage(img, this.x, this.y, this.width, this.height);
+    }
+    /**
+     * @param  {} velocity Velocidade do objeto
+     * @param  {} limit Limite do numero de arquivos de imagem
+     * @param  {} name Prefixo do nome do arquivo
+     */
+    animation(velocity, limit, name) {
+        this.timer += 1;
+        if (this.timer >= velocity) {
+            this.timer = 0;
+            this.frame += 1;
+        }
+        if (this.frame >= limit) {
+            this.frame = 0;
+        }
+        this.image = 'assets/images/' + name + this.frame + '.png';
     }
 }
 
