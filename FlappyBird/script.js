@@ -15,3 +15,5 @@
  * ············ Aula 97. Base do projeto
  * *****
  */
+
+let canvas = document.getElementById('canvas').getContext('2d');
