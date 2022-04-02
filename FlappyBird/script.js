@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 99. Desenhando Obj na tela
+ * ············ Aula 100. Background infinito
  * *****
  */
 
@@ -23,8 +23,16 @@ const areaTela = {
     tx: 430,
     ty: 560,
 };
-let bg = new Obj(
+let bg = new Bg(
     areaTela.ix,
+    areaTela.iy,
+    areaTela.tx,
+    areaTela.ty,
+    'assets/images/sky.png',
+);
+
+let bg2 = new Bg(
+    areaTela.tx,
     areaTela.iy,
     areaTela.tx,
     areaTela.ty,
@@ -33,9 +41,13 @@ let bg = new Obj(
 
 function draw() {
     bg.draw();
+    bg2.draw();
 }
 
-function update() {}
+function update() {
+    bg.move(5, -areaTela.tx, areaTela.ix);
+    bg2.move(5, areaTela.ix, areaTela.tx);
+}
 
 function clearScreen() {
     canvas.clearRect(areaTela.ix, areaTela.iy, areaTela.tx, areaTela.ty);

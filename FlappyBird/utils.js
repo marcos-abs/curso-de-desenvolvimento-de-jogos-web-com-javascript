@@ -30,3 +30,12 @@ class Obj {
         canvas.drawImage(img, this.x, this.y, this.width, this.height);
     }
 }
+
+class Bg extends Obj {
+    move(speed, limit, position) {
+        this.x -= speed;
+        if (this.x <= limit) {
+            this.x = position;
+        }
+    }
+}
