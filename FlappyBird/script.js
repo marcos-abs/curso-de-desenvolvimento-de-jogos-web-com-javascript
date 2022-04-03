@@ -75,6 +75,10 @@ let bird = new Bird(
     'assets/images/bird0.png',
 );
 
+document.addEventListener('click', function (e) {
+    bird.y -= 5;
+});
+
 function draw() {
     bg.draw();
     bg2.draw();
