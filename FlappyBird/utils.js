@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 106. Aplicando gravidade
+ * ············ Aula 107. Limites de voo
  * *****
  */
 class Obj {
@@ -68,5 +68,15 @@ class Bird extends Obj {
             this.vel += this.grav;
         }
         this.y += this.vel;
+    }
+
+    limits() {
+        if (this.y >= areaTerra.iy - this.height + 10) {
+            this.y = areaTerra.iy - this.height + 10;
+            this.vel = 0;
+        } else if (this.y <= areaTela.iy) {
+            this.y = areaTela.iy;
+            this.vel = 0;
+        }
     }
 }

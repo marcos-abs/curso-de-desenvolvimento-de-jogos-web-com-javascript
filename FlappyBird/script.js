@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 106. Aplicando gravidade
+ * ············ Aula 107. Limites de voo
  * *****
  */
 
@@ -94,6 +94,7 @@ function update() {
     ground2.move(3, areaTerra.ix, areaTerra.tx);
     bird.move();
     bird.animation(10, 4, 'bird');
+    bird.limits();
 }
 
 function clearScreen() {
