@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 108. Adicionando canos
+ * ············ Aula 110. Canos aleatórios
  * *****
  */
 
@@ -99,8 +99,7 @@ function update() {
     bird.move();
     bird.animation(10, 4, 'bird');
     bird.limits();
-    pipe1.move(1, -100, 500);
-    pipe2.move(1, -100, 500);
+    pipe1.move(1, -100, 500, pipe2);
 }
 
 function clearScreen() {

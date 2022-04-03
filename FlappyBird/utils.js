@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 108. Adicionando canos
+ * ············ Aula 110. Canos aleatórios
  * *****
  */
 class Obj {
@@ -91,6 +91,10 @@ class Pipe extends Obj {
         this.x -= velocity;
         if (this.x <= limit) {
             this.x = new_pos;
+            // Math.random() * (areaTela.ty - areaTerra.ty) + areaTerra.iy;
+            this.y = Math.random() * (600 - 200) + 200;
         }
+        pipe2.x = this.x;
+        pipe2.y = this.y - 600;
     }
 }
