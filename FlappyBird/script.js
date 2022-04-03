@@ -17,93 +17,106 @@
  */
 
 let canvas = document.getElementById('canvas').getContext('2d');
-const areaTela = {
-    ix: 0,
-    iy: 0,
-    tx: 430,
-    ty: 560,
-};
-const areaTerra = {
-    ix: 0,
-    iy: 396,
-    tx: 430,
-    ty: 164,
-};
-const areaBird = {
-    ix: 0,
-    iy: 250,
-    tx: 63,
-    ty: 51,
-};
+const aTela = new Area(0, 0, 430, 560);
+const aTerra = new Area(0, 400, 430, 160);
+const aBird = new Area(0, 250, 63, 51);
+const aPipeUp = new Area(300, -200, 96, 358);
+const aPipeDown = new Area(300, 300, 96, 358);
+const pipeDiff = aPipeDown.py - aPipeUp.py;
+const aCoin = new Area(50, 50, 45, 45);
+
 let bg = new Bg(
-    areaTela.ix,
-    areaTela.iy,
-    areaTela.tx,
-    areaTela.ty,
+    aTela.px,
+    aTela.py,
+    aTela.width,
+    aTela.height,
     'assets/images/sky.png',
 );
-
 let bg2 = new Bg(
-    areaTela.tx,
-    areaTela.iy,
-    areaTela.tx,
-    areaTela.ty,
+    aTela.px,
+    aTela.py,
+    aTela.width,
+    aTela.height,
     'assets/images/sky.png',
 );
-
 let ground = new Ground(
-    areaTerra.ix,
-    areaTerra.iy,
-    areaTerra.tx,
-    areaTerra.ty,
+    aTerra.px,
+    aTerra.py,
+    aTerra.width,
+    aTerra.height,
     'assets/images/ground.png',
 );
-
 let ground2 = new Ground(
-    areaTerra.tx,
-    areaTerra.iy,
-    areaTerra.tx,
-    areaTerra.ty,
+    aTerra.width,
+    aTerra.py,
+    aTerra.width,
+    aTerra.height,
     'assets/images/ground.png',
 );
-let pipe1 = new Pipe(300, 300, 96, 358, 'assets/images/pipe1.png');
-let pipe2 = new Pipe(300, -200, 96, 358, 'assets/images/pipe2.png');
+let pipeDown = new Pipe(
+    aPipeDown.px,
+    aPipeDown.py,
+    aPipeDown.width,
+    aPipeDown.height,
+    'assets/images/pipe1.png',
+);
+let pipeUp = new Pipe(
+    aPipeUp.px,
+    aPipeUp.py,
+    aPipeUp.width,
+    aPipeUp.height,
+    'assets/images/pipe2.png',
+);
 
 let bird = new Bird(
-    areaBird.ix,
-    areaBird.iy,
-    areaBird.tx,
-    areaBird.ty,
+    aBird.px,
+    aBird.py,
+    aBird.width,
+    aBird.height,
     'assets/images/bird0.png',
 );
 
-document.addEventListener('click', function (e) {
-    bird.vel -= 12;
+let coin = new Coin(
+    aCoin.px,
+    aCoin.py,
+    aCoin.width,
+    aCoin.height,
+    'assets/images/3.png',
+);
+
+// document.addEventListener('click', function (e) {
+// bird.vel -= 12;
+document.addEventListener('keydown', function (e) {
+    if (event.key === 'x' || event.key === 'X') {
+        bird.vel -= 15;
+    }
 });
 
 function draw() {
     bg.draw();
     bg2.draw();
-    pipe1.draw();
-    pipe2.draw();
+    pipeDown.draw();
+    pipeUp.draw();
     ground.draw();
     ground2.draw();
     bird.draw();
+    // coin.draw();
 }
 
 function update() {
-    bg.move(1, -areaTela.tx, areaTela.ix);
-    bg2.move(1, areaTela.ix, areaTela.tx);
-    ground.move(3, -areaTerra.tx, areaTerra.ix);
-    ground2.move(3, areaTerra.ix, areaTerra.tx);
+    bg.move(1, -aTela.width, aTela.px);
+    bg2.move(1, aTela.px, aTela.width);
+    ground.move(3, -aTerra.width, aTerra.px);
+    ground2.move(3, aTerra.px, aTerra.width);
     bird.move();
     bird.animation(10, 4, 'bird');
     bird.limits();
-    pipe1.move(1, -100, 500, pipe2);
+    pipeDown.move(1, -100, 300, pipeUp, pipeDiff);
+    // coin.move(pipeDown);
 }
 
 function clearScreen() {
-    canvas.clearRect(areaTela.ix, areaTela.iy, areaTela.tx, areaTela.ty);
+    canvas.clearRect(aTela.ix, aTela.iy, aTela.tx, aTela.ty);
 }
 
 function main() {

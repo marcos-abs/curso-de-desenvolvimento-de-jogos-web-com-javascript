@@ -15,6 +15,21 @@
  * ············ Aula 110. Canos aleatórios
  * *****
  */
+
+class Area {
+    /**
+     * @param  {} px Posição em X
+     * @param  {} py Posição em Y
+     * @param  {} width Largura
+     * @param  {} height Altura
+     */
+    constructor(px, py, width, height) {
+        this.px = px;
+        this.py = py;
+        this.width = width;
+        this.height = height;
+    }
+}
 class Obj {
     frame = 0; // jshint ignore:line
     timer = 0;
@@ -71,11 +86,11 @@ class Bird extends Obj {
     }
 
     limits() {
-        if (this.y >= areaTerra.iy - this.height + 10) {
-            this.y = areaTerra.iy - this.height + 10;
+        if (this.y >= aTerra.iy - this.height) {
+            this.y = aTerra.iy - this.height;
             this.vel = 0;
-        } else if (this.y <= areaTela.iy) {
-            this.y = areaTela.iy;
+        } else if (this.y <= aTela.iy) {
+            this.y = aTela.iy;
             this.vel = 0;
         }
     }
@@ -87,14 +102,29 @@ class Pipe extends Obj {
      * @param  {} limit Limite de posicionamento do objeto
      * @param  {} new_pos Nova posição do objeto
      */
-    move(velocity, limit, new_pos) {
+    move(velocity, limit, new_pos, pipe2, diff) {
         this.x -= velocity;
         if (this.x <= limit) {
             this.x = new_pos;
-            // Math.random() * (areaTela.ty - areaTerra.ty) + areaTerra.iy;
-            this.y = Math.random() * (600 - 200) + 200;
+            // this.y = Math.random() * (aTela.height - aTerra.height) + diff; // jshint ignore:line
+            this.y =
+                Math.random() * (aTela.py + aTela.height - aTerra.py) +
+                aTerra.py;
         }
         pipe2.x = this.x;
-        pipe2.y = this.y - 600;
+        if (pipe2.y > aTerra.py) {
+            pipe2.y = aTerra.py - pipe2.height / 5;
+        }
+    }
+}
+
+class Coin extends Obj {
+    move(pipe) {
+        this.x = pipe.x + pipe.width / 2;
+        // this.y = pipe.y + pipe.height * -1;
+        this.y = pipe.y - 150;
+        // UNDONE: parei aqui em 3m16s de 4m50s
+        // FIXME: pipeDown está sumindo após a primeira volta
+        // BUG: bird está passando do limite da terra e do céu também
     }
 }

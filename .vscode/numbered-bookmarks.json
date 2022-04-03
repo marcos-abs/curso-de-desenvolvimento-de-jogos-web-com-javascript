@@ -4,8 +4,8 @@
 			"path": "pong-game/script.js",
 			"bookmarks": [
 				{
-					"line": 276,
-					"column": 39
+					"line": -1,
+					"column": 0
 				},
 				{
 					"line": 281,
@@ -13,6 +13,51 @@
 				},
 				{
 					"line": 67,
+					"column": 0
+				},
+				{
+					"line": -1,
+					"column": 0
+				},
+				{
+					"line": -1,
+					"column": 0
+				},
+				{
+					"line": -1,
+					"column": 0
+				},
+				{
+					"line": -1,
+					"column": 0
+				},
+				{
+					"line": -1,
+					"column": 0
+				},
+				{
+					"line": -1,
+					"column": 0
+				},
+				{
+					"line": -1,
+					"column": 0
+				}
+			]
+		},
+		{
+			"path": "FlappyBird/script.js",
+			"bookmarks": [
+				{
+					"line": 25,
+					"column": 41
+				},
+				{
+					"line": -1,
+					"column": 0
+				},
+				{
+					"line": -1,
 					"column": 0
 				},
 				{
