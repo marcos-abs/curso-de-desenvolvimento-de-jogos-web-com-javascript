@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 107. Limites de voo
+ * ············ Aula 108. Adicionando canos
  * *****
  */
 
@@ -66,6 +66,8 @@ let ground2 = new Ground(
     areaTerra.ty,
     'assets/images/ground.png',
 );
+let pipe1 = new Obj(250, 300, 96, 358, 'assets/images/pipe1.png');
+let pipe2 = new Obj(250, -150, 96, 358, 'assets/images/pipe2.png');
 
 let bird = new Bird(
     areaBird.ix,
@@ -82,6 +84,8 @@ document.addEventListener('click', function (e) {
 function draw() {
     bg.draw();
     bg2.draw();
+    pipe1.draw();
+    pipe2.draw();
     ground.draw();
     ground2.draw();
     bird.draw();
