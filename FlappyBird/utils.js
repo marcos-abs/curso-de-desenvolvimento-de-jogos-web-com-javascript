@@ -80,3 +80,17 @@ class Bird extends Obj {
         }
     }
 }
+
+class Pipe extends Obj {
+    /**
+     * @param  {} velocity Velocidade do objeto
+     * @param  {} limit Limite de posicionamento do objeto
+     * @param  {} new_pos Nova posição do objeto
+     */
+    move(velocity, limit, new_pos) {
+        this.x -= velocity;
+        if (this.x <= limit) {
+            this.x = new_pos;
+        }
+    }
+}

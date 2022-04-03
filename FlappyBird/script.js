@@ -66,8 +66,8 @@ let ground2 = new Ground(
     areaTerra.ty,
     'assets/images/ground.png',
 );
-let pipe1 = new Obj(250, 300, 96, 358, 'assets/images/pipe1.png');
-let pipe2 = new Obj(250, -150, 96, 358, 'assets/images/pipe2.png');
+let pipe1 = new Pipe(300, 300, 96, 358, 'assets/images/pipe1.png');
+let pipe2 = new Pipe(300, -200, 96, 358, 'assets/images/pipe2.png');
 
 let bird = new Bird(
     areaBird.ix,
@@ -99,6 +99,8 @@ function update() {
     bird.move();
     bird.animation(10, 4, 'bird');
     bird.limits();
+    pipe1.move(1, -100, 500);
+    pipe2.move(1, -100, 500);
 }
 
 function clearScreen() {
