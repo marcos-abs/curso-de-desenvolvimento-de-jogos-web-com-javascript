@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 97. Base do projeto
+ * ············ Aula 106. Aplicando gravidade
  * *****
  */
 class Obj {
@@ -60,4 +60,13 @@ class Bg extends Obj {
 
 class Ground extends Bg {}
 
-class Bird extends Obj {}
+class Bird extends Obj {
+    vel = 2; // jshint ignore:line
+    grav = 1;
+    move() {
+        if (this.vel < 10) {
+            this.vel += this.grav;
+        }
+        this.y += this.vel;
+    }
+}
