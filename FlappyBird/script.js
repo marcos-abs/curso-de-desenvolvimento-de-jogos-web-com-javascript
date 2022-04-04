@@ -22,63 +22,63 @@ const aTerra = new Area(0, 400, 430, 160);
 const aBird = new Area(0, 250, 63, 51);
 const aPipeUp = new Area(300, -200, 96, 358);
 const aPipeDown = new Area(300, 300, 96, 358);
-const pipeDiff = aPipeUp.py + aPipeUp.height - aPipeDown.py;
+const pipeDiff = aPipeUp.y + aPipeUp.height - aPipeDown.y;
 const aCoin = new Area(50, 50, 45, 45);
 
 let bg = new Bg(
-    aTela.px,
-    aTela.py,
+    aTela.x,
+    aTela.y,
     aTela.width,
     aTela.height,
     'assets/images/sky.png',
 );
 let bg2 = new Bg(
-    aTela.px,
-    aTela.py,
+    aTela.x,
+    aTela.y,
     aTela.width,
     aTela.height,
     'assets/images/sky.png',
 );
 let ground = new Ground(
-    aTerra.px,
-    aTerra.py,
+    aTerra.x,
+    aTerra.y,
     aTerra.width,
     aTerra.height,
     'assets/images/ground.png',
 );
 let ground2 = new Ground(
     aTerra.width,
-    aTerra.py,
+    aTerra.y,
     aTerra.width,
     aTerra.height,
     'assets/images/ground.png',
 );
 let pipeDown = new Pipe(
-    aPipeDown.px,
-    aPipeDown.py,
+    aPipeDown.x,
+    aPipeDown.y,
     aPipeDown.width,
     aPipeDown.height,
     'assets/images/pipe1.png',
 );
 let pipeUp = new Pipe(
-    aPipeUp.px,
-    aPipeUp.py,
+    aPipeUp.x,
+    aPipeUp.y,
     aPipeUp.width,
     aPipeUp.height,
     'assets/images/pipe2.png',
 );
 
 let bird = new Bird(
-    aBird.px,
-    aBird.py,
+    aBird.x,
+    aBird.y,
     aBird.width,
     aBird.height,
     'assets/images/bird0.png',
 );
 
 let coin = new Coin(
-    aCoin.px,
-    aCoin.py,
+    aCoin.x,
+    aCoin.y,
     aCoin.width,
     aCoin.height,
     'assets/images/3.png',
@@ -108,23 +108,22 @@ function pipeRand() {
     // console.log('sw: ', Math.trunc(sw));
     switch (Math.trunc(sw)) {
         case 1:
-            pipeUp.move(1, -100, 300, pipeDown, bird);
             break;
         case 2:
-            pipeDown.move(1, -100, 300, pipeUp, bird);
+            pipeDown.move(1, -100, aPipeDown.x, aPipeUp, 'down');
             break;
     }
 }
 
 function update() {
-    bg.move(1, -aTela.width, aTela.px);
-    bg2.move(1, aTela.px, aTela.width);
-    ground.move(3, -aTerra.width, aTerra.px);
-    ground2.move(3, aTerra.px, aTerra.width);
+    bg.move(1, -aTela.width, aTela.x);
+    bg2.move(1, aTela.x, aTela.width);
+    ground.move(3, -aTerra.width, aTerra.x);
+    ground2.move(3, aTerra.x, aTerra.width);
     bird.move();
     bird.animation(10, 4, 'bird');
     bird.limits();
-    pipeRand();
+    pipeUp.move(1, -100, aPipeUp.x, aPipeDown);
     // coin.move(pipeDown);
 }
 

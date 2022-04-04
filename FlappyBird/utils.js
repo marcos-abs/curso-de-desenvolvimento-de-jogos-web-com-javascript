@@ -18,14 +18,14 @@
 
 class Area {
     /**
-     * @param  {} px Posição em X
-     * @param  {} py Posição em Y
+     * @param  {} x Posição em X
+     * @param  {} y Posição em Y
      * @param  {} width Largura
      * @param  {} height Altura
      */
-    constructor(px, py, width, height) {
-        this.px = px;
-        this.py = py;
+    constructor(x, y, width, height) {
+        this.x = x;
+        this.y = y;
         this.width = width;
         this.height = height;
     }
@@ -102,23 +102,26 @@ class Pipe extends Obj {
      * @param  {} limit Limite de posicionamento do objeto
      * @param  {} new_pos Nova posição do objeto
      */
-    move(velocity, limit, new_pos, pipe, bird) {
+    move(velocity, limit, new_pos, pipeDown) {
         this.x -= velocity;
         if (this.x <= limit) {
             this.x = new_pos;
-            // this.y = Math.random() * (aTela.height - aTerra.height) + diff; // jshint ignore:line
-            this.y = Math.random() * (pipe.y + pipe.height) + pipe.y; // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
-            if (this.y === pipe.y) {
-                this.y = this.y + this.height;
-            }
-            // if (this.y >= pipe.y + pipe.height + aBird.height) {
-            //     this.y = pipe.y + pipe.height + aBird.height;
-            // }
         }
-        // console.log(`this.y: ${this.y} pipe.y: ${pipe.y}`);
-        pipe.x = this.x;
-        if (this.y > pipe.y) {
-            this.y = pipe.y + pipe.height;
+        pipeDown.x = this.x;
+        // this.y = Math.random() * (aTela.height - aTerra.height) + diff; // jshint ignore:line
+        this.y = Math.trunc(
+            Math.random() * (pipeDown.y + pipeDown.height) + pipeDown.y,
+        ); // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
+        console.log('Random(this.y): ', this.y);
+        if (this.y + this.height === pipeDown.y) {
+            this.y = this.height - bird.height;
+        }
+        if (this.y >= ground.height || this.y >= pipeDown.y - aBird.height) {
+            this.y = pipeDown.y + pipeDown.height + aBird.height;
+        }
+        console.log(`this.y: ${this.y} pipeDown.y: ${pipeDown.y}`);
+        if (this.y > pipeDown.y) {
+            this.y = pipeDown.y + pipeDown.height;
         }
     }
 }
