@@ -102,18 +102,23 @@ class Pipe extends Obj {
      * @param  {} limit Limite de posicionamento do objeto
      * @param  {} new_pos Nova posição do objeto
      */
-    move(velocity, limit, new_pos, pipe2, diff) {
+    move(velocity, limit, new_pos, pipe, bird) {
         this.x -= velocity;
         if (this.x <= limit) {
             this.x = new_pos;
             // this.y = Math.random() * (aTela.height - aTerra.height) + diff; // jshint ignore:line
-            this.y =
-                Math.random() * (aTela.py + aTela.height - aTerra.py) +
-                aTerra.py;
+            this.y = Math.random() * (pipe.y + pipe.height) + pipe.y; // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
+            if (this.y === pipe.y) {
+                this.y = this.y + this.height;
+            }
+            // if (this.y >= pipe.y + pipe.height + aBird.height) {
+            //     this.y = pipe.y + pipe.height + aBird.height;
+            // }
         }
-        pipe2.x = this.x;
-        if (pipe2.y > aTerra.py) {
-            pipe2.y = aTerra.py - pipe2.height / 5;
+        // console.log(`this.y: ${this.y} pipe.y: ${pipe.y}`);
+        pipe.x = this.x;
+        if (this.y > pipe.y) {
+            this.y = pipe.y + pipe.height;
         }
     }
 }

@@ -22,7 +22,7 @@ const aTerra = new Area(0, 400, 430, 160);
 const aBird = new Area(0, 250, 63, 51);
 const aPipeUp = new Area(300, -200, 96, 358);
 const aPipeDown = new Area(300, 300, 96, 358);
-const pipeDiff = aPipeDown.py - aPipeUp.py;
+const pipeDiff = aPipeUp.py + aPipeUp.height - aPipeDown.py;
 const aCoin = new Area(50, 50, 45, 45);
 
 let bg = new Bg(
@@ -103,6 +103,19 @@ function draw() {
     // coin.draw();
 }
 
+function pipeRand() {
+    let sw = Math.random() * 2 + 1;
+    console.log('sw: ', Math.trunc(sw));
+    switch (Math.trunc(sw)) {
+        case 1:
+            pipeUp.move(1, -100, 300, pipeDown, bird);
+            break;
+        case 2:
+            pipeDown.move(1, -100, 300, pipeUp, bird);
+            break;
+    }
+}
+
 function update() {
     bg.move(1, -aTela.width, aTela.px);
     bg2.move(1, aTela.px, aTela.width);
@@ -111,7 +124,7 @@ function update() {
     bird.move();
     bird.animation(10, 4, 'bird');
     bird.limits();
-    pipeDown.move(1, -100, 300, pipeUp, pipeDiff);
+    pipeRand();
     // coin.move(pipeDown);
 }
 

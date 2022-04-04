@@ -8,8 +8,8 @@
 					"column": 0
 				},
 				{
-					"line": 281,
-					"column": 39
+					"line": -1,
+					"column": 0
 				},
 				{
 					"line": 67,
@@ -46,11 +46,11 @@
 			]
 		},
 		{
-			"path": "FlappyBird/script.js",
+			"path": "FlappyBird/utils.js",
 			"bookmarks": [
 				{
-					"line": 25,
-					"column": 41
+					"line": 104,
+					"column": 49
 				},
 				{
 					"line": -1,
