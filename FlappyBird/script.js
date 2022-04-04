@@ -6,7 +6,7 @@
  * File Created: Saturday, 02 April 2022 00:03:11
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Monday, 04 April 2022 09:42:43
+ * Last Modified: Monday, 04 April 2022 10:04:43
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
@@ -105,7 +105,7 @@ function draw() {
 
 function pipeRand() {
     let sw = Math.random() * 2 + 1;
-    console.log('sw: ', Math.trunc(sw));
+    // console.log('sw: ', Math.trunc(sw));
     switch (Math.trunc(sw)) {
         case 1:
             pipeUp.move(1, -100, 300, pipeDown, bird);
