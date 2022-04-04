@@ -6,7 +6,7 @@
  * File Created: Saturday, 02 April 2022 00:03:34
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Monday, 04 April 2022 09:42:30
+ * Last Modified: Monday, 04 April 2022 09:45:26
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
@@ -115,7 +115,7 @@ class Pipe extends Obj {
             //     this.y = pipe.y + pipe.height + aBird.height;
             // }
         }
-        console.log(`this.y: ${this.y} pipe.y: ${pipe.y}`);
+        // console.log(`this.y: ${this.y} pipe.y: ${pipe.y}`);
         pipe.x = this.x;
         if (this.y > pipe.y) {
             this.y = pipe.y + pipe.height;
