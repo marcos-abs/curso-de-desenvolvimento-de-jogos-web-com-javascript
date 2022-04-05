@@ -23,6 +23,7 @@ const aBird = new Area(0, 250, 63, 51);
 const aPipeDown = new Area(300, 300, 96, 358);
 const aPipeUp = new Area(300, -200, 96, 358);
 const aCoin = new Area(50, 50, 45, 45);
+const velocity = 10;
 
 let bg = new Bg(
     aTela.x,
@@ -108,10 +109,11 @@ function update() {
     ground.move(3, -aTerra.width, aTerra.x);
     ground2.move(3, aTerra.x, aTerra.width);
     bird.move();
-    bird.animation(10, 4, 'bird');
+    bird.animation(velocity, 4, 'bird');
     bird.limits();
     pipeDown.move(1, -100, aPipeDown.x, pipeUp);
     coin.move(pipeDown);
+    coin.animation(velocity, 6, '');
 }
 
 function clearScreen() {
