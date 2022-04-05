@@ -22,7 +22,6 @@ const aTerra = new Area(0, 400, 430, 160);
 const aBird = new Area(0, 250, 63, 51);
 const aPipeDown = new Area(300, 300, 96, 358);
 const aPipeUp = new Area(300, -200, 96, 358);
-// const pipeDiff = aPipeUp.y + aPipeUp.height - aPipeDown.y;
 const aCoin = new Area(50, 50, 45, 45);
 
 let bg = new Bg(

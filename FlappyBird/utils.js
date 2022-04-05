@@ -105,10 +105,16 @@ class Pipe extends Obj {
         this.x -= vel;
         if (this.x <= limit) {
             this.x = new_pos;
-            this.y = Math.random() * (aTerra.y + aBird.height) + aBird.height; // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
+            while (true) {
+                this.y =
+                    Math.random() * (aTerra.y + aBird.height) + aBird.height; // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
+                if (this.y > aTela.y && this.y < aTerra.y) {
+                    break;
+                }
+            }
         }
         pipe2.x = this.x;
-        pipe2.y = this.y - 450;
+        pipe2.y = this.y - (aPipeUp.height + aBird.height) * 1.025; // 0.025 é a distância entre os canos e o pássaro
     }
 }
 
@@ -117,7 +123,7 @@ class Coin extends Obj {
      * @param  {} pipe Objeto que será usado como base para a animação
      */
     move(pipe) {
-        this.x = pipe.x + aBird.width / 2;
-        this.y = pipe.y - aBird.height * 1.25;
+        this.x = pipe.x + aBird.width / 2; // a metade do tamanho do pássaro
+        this.y = pipe.y - aBird.height;
     }
 }
