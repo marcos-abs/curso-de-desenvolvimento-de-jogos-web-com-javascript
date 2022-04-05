@@ -23,7 +23,13 @@ const aBird = new Area(0, 250, 63, 51);
 const aPipeDown = new Area(300, 300, 96, 358);
 const aPipeUp = new Area(300, -200, 96, 358);
 const aCoin = new Area(50, 50, 45, 45);
+
 const velocity = 10;
+const respawPosition = aPipeDown.x;
+let lives = 5;
+let pts = 0;
+let jogando = true;
+let exitGame = false;
 
 let bg = new Bg(
     aTela.x,
@@ -84,36 +90,76 @@ let coin = new Coin(
     'assets/images/3.png',
 );
 
-// document.addEventListener('click', function (e) {
-// bird.vel -= 12;
+let textPoints = new Text();
+let textLives = new Text();
+let textResult = new Text();
+
 document.addEventListener('keydown', function (e) {
     if (event.key === 'x' || event.key === 'X') {
         bird.vel -= 15;
     }
 });
 
+function collides() {
+    if (bird.collide(pipeDown) || bird.collide(pipeUp)) {
+        pipeDown.respaw();
+        pipeUp.respaw();
+        lives -= 1;
+    }
+    if (bird.collide(coin)) {
+        coin.respaw();
+        pts += 1;
+    }
+}
+
 function draw() {
-    bg.draw();
-    bg2.draw();
-    pipeDown.draw();
-    pipeUp.draw();
-    ground.draw();
-    ground2.draw();
-    bird.draw();
-    coin.draw();
+    if (jogando) {
+        bg.draw();
+        bg2.draw();
+        pipeDown.draw();
+        pipeUp.draw();
+        ground.draw();
+        ground2.draw();
+        bird.draw();
+        coin.draw();
+        textPoints.draw('pontos: ' + pts, 15, 30, 'white');
+        textLives.draw('vidas: ' + lives, 315, 30, 'white');
+    } else {
+        bg.draw();
+        bg2.draw();
+        textResult.draw('Game Over', 95, 140, 'blue', '50px Arial');
+        textResult.draw('Pontos: ' + pts, 150, 190, 'orange', '30px Arial');
+        textResult.draw(
+            'Pressione <F5> para reiniciar o jogo.',
+            70,
+            230,
+            'green',
+            '20px Arial',
+        );
+    }
 }
 
 function update() {
     bg.move(1, -aTela.width, aTela.x);
     bg2.move(1, aTela.x, aTela.width);
-    ground.move(3, -aTerra.width, aTerra.x);
-    ground2.move(3, aTerra.x, aTerra.width);
-    bird.move();
-    bird.animation(velocity, 4, 'bird');
-    bird.limits();
-    pipeDown.move(1, -100, aPipeDown.x, pipeUp);
-    coin.move(pipeDown);
-    coin.animation(velocity, 6, '');
+    if (jogando) {
+        ground.move(3, -aTerra.width, aTerra.x);
+        ground2.move(3, aTerra.x, aTerra.width);
+        bird.move();
+        bird.animation(velocity, 4, 'bird');
+        bird.limits();
+        pipeDown.move(1, -100, respawPosition, pipeUp);
+        coin.move(pipeDown);
+        coin.animation(velocity, 6, '');
+    }
+}
+
+function gameOver() {
+    if (lives < 1) {
+        lives = 0;
+        draw();
+        jogando = false;
+    }
 }
 
 function clearScreen() {
@@ -122,8 +168,12 @@ function clearScreen() {
 
 function main() {
     clearScreen();
-    draw();
-    update();
+    if (!exitGame) {
+        draw();
+        update();
+        collides();
+        gameOver();
+    }
     requestAnimationFrame(main);
 }
 

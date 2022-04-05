@@ -62,6 +62,19 @@ class Obj {
         }
         this.image = 'assets/images/' + name + this.frame + '.png';
     }
+
+    collide(obj) {
+        if (
+            this.x < obj.x + obj.width &&
+            this.x + this.width > obj.x &&
+            this.y < obj.y + obj.height &&
+            this.y + this.height > obj.y
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 class Bg extends Obj {
@@ -101,20 +114,33 @@ class Pipe extends Obj {
      * @param  {} new_pos Nova posição do objeto
      * @param  {} pipe2 Cano oposto
      */
-    move(vel, limit, new_pos, pipe2) {
+    move(vel, limit, new_pos, pipeDown) {
         this.x -= vel;
         if (this.x <= limit) {
             this.x = new_pos;
             while (true) {
-                this.y =
-                    Math.random() * (aTerra.y + aBird.height) + aBird.height; // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
-                if (this.y > aTela.y && this.y < aTerra.y) {
+                this.y = this.calcPosition();
+                if (
+                    this.y + this.height > aTela.y &&
+                    this.y < aTerra.y &&
+                    this.y < aTela.y
+                ) {
                     break;
                 }
             }
         }
-        pipe2.x = this.x;
-        pipe2.y = this.y - (aPipeUp.height + aBird.height) * 1.025; // 0.025 é a distância entre os canos e o pássaro
+        pipeDown.x = this.x;
+        pipeDown.y = this.y - (aPipeUp.height + aBird.height) * 1.125; // 0.025 é a distância entre os canos e o pássaro
+    }
+
+    respaw() {
+        this.y = this.calcPosition();
+        this.x = respawPosition;
+        console.log('respaw', this.x, this.y);
+    }
+
+    calcPosition() {
+        return Math.random() * (aTerra.y + aBird.height) + aBird.height; // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
     }
 }
 
@@ -125,5 +151,33 @@ class Coin extends Obj {
     move(pipe) {
         this.x = pipe.x + aBird.width / 2; // a metade do tamanho do pássaro
         this.y = pipe.y - aBird.height;
+    }
+
+    respaw() {
+        // BUG: moeda aparece pulando após colisão e trava o jogo
+        // UNDONE: parei aqui em 0m39s de 2m34s da aula 112. Colisão
+        this.y = this.calcPosition();
+        this.x = respawPosition;
+        console.log('respaw', this.x, this.y);
+    }
+
+    calcPosition() {
+        return Math.random() * (aTerra.y + aBird.height) + aBird.height; // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
+    }
+}
+
+class Text {
+    /**
+     * Acrescenta um texto a tela do jogo
+     *
+     * @param {*} text frase ou informação que será mostrada
+     * @param {*} px posição no eixo x inicial a informação que será mostrada
+     * @param {*} py idem ao anterior, contudo no eixo y
+     * @memberof Text
+     */
+    draw(text, px, py, color, font = '30px Arial') {
+        canvas.font = font;
+        canvas.fillStyle = color;
+        canvas.fillText(text, px, py);
     }
 }
