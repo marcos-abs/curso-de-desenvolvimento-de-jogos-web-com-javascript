@@ -86,53 +86,38 @@ class Bird extends Obj {
     }
 
     limits() {
-        if (this.y >= aTerra.iy - this.height) {
-            this.y = aTerra.iy - this.height;
-            this.vel = 0;
-        } else if (this.y <= aTela.iy) {
-            this.y = aTela.iy;
-            this.vel = 0;
+        if (this.y >= aTerra.y - this.height) {
+            this.y = aTerra.y - this.height;
+        } else if (this.y <= aTela.y) {
+            this.y = aTela.y;
         }
     }
 }
 
 class Pipe extends Obj {
     /**
-     * @param  {} velocity Velocidade do objeto
+     * @param  {} vel Velocidade do objeto
      * @param  {} limit Limite de posicionamento do objeto
      * @param  {} new_pos Nova posição do objeto
+     * @param  {} pipe2 Cano oposto
      */
-    move(velocity, limit, new_pos, pipeDown) {
-        this.x -= velocity;
+    move(vel, limit, new_pos, pipe2) {
+        this.x -= vel;
         if (this.x <= limit) {
             this.x = new_pos;
+            this.y = Math.random() * (aTerra.y + aBird.height) + aBird.height; // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
         }
-        pipeDown.x = this.x;
-        // this.y = Math.random() * (aTela.height - aTerra.height) + diff; // jshint ignore:line
-        this.y = Math.trunc(
-            Math.random() * (pipeDown.y + pipeDown.height) + pipeDown.y,
-        ); // ver https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_random2
-        console.log('Random(this.y): ', this.y);
-        if (this.y + this.height === pipeDown.y) {
-            this.y = this.height - bird.height;
-        }
-        if (this.y >= ground.height || this.y >= pipeDown.y - aBird.height) {
-            this.y = pipeDown.y + pipeDown.height + aBird.height;
-        }
-        console.log(`this.y: ${this.y} pipeDown.y: ${pipeDown.y}`);
-        if (this.y > pipeDown.y) {
-            this.y = pipeDown.y + pipeDown.height;
-        }
+        pipe2.x = this.x;
+        pipe2.y = this.y - 450;
     }
 }
 
 class Coin extends Obj {
+    /**
+     * @param  {} pipe Objeto que será usado como base para a animação
+     */
     move(pipe) {
-        this.x = pipe.x + pipe.width / 2;
-        // this.y = pipe.y + pipe.height * -1;
-        this.y = pipe.y - 150;
-        // UNDONE: parei aqui em 3m16s de 4m50s
-        // FIXME: pipeDown está sumindo após a primeira volta
-        // BUG: bird está passando do limite da terra e do céu também
+        this.x = pipe.x + aBird.width / 2;
+        this.y = pipe.y - aBird.height * 1.25;
     }
 }

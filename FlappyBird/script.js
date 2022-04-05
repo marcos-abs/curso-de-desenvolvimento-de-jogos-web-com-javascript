@@ -20,9 +20,9 @@ let canvas = document.getElementById('canvas').getContext('2d');
 const aTela = new Area(0, 0, 430, 560);
 const aTerra = new Area(0, 400, 430, 160);
 const aBird = new Area(0, 250, 63, 51);
-const aPipeUp = new Area(300, -200, 96, 358);
 const aPipeDown = new Area(300, 300, 96, 358);
-const pipeDiff = aPipeUp.y + aPipeUp.height - aPipeDown.y;
+const aPipeUp = new Area(300, -200, 96, 358);
+// const pipeDiff = aPipeUp.y + aPipeUp.height - aPipeDown.y;
 const aCoin = new Area(50, 50, 45, 45);
 
 let bg = new Bg(
@@ -33,7 +33,7 @@ let bg = new Bg(
     'assets/images/sky.png',
 );
 let bg2 = new Bg(
-    aTela.x,
+    aTela.width,
     aTela.y,
     aTela.width,
     aTela.height,
@@ -100,19 +100,7 @@ function draw() {
     ground.draw();
     ground2.draw();
     bird.draw();
-    // coin.draw();
-}
-
-function pipeRand() {
-    let sw = Math.random() * 2 + 1;
-    // console.log('sw: ', Math.trunc(sw));
-    switch (Math.trunc(sw)) {
-        case 1:
-            break;
-        case 2:
-            pipeDown.move(1, -100, aPipeDown.x, aPipeUp, 'down');
-            break;
-    }
+    coin.draw();
 }
 
 function update() {
@@ -123,8 +111,8 @@ function update() {
     bird.move();
     bird.animation(10, 4, 'bird');
     bird.limits();
-    pipeUp.move(1, -100, aPipeUp.x, aPipeDown);
-    // coin.move(pipeDown);
+    pipeDown.move(1, -100, aPipeDown.x, pipeUp);
+    coin.move(pipeDown);
 }
 
 function clearScreen() {
