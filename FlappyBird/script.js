@@ -106,10 +106,14 @@ function collides() {
         pipeDown.respaw();
         pipeUp.respaw();
         lives -= 1;
+        bird.vel = 2;
     }
     if (bird.collide(coin)) {
+        pipeDown.respaw();
+        pipeUp.respaw();
         coin.respaw();
         pts += 1;
+        bird.vel = 2;
     }
 }
 
