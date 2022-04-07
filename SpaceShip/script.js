@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Thursday, 07 April 2022 11:48:04
+ * Last Modified: Thursday, 07 April 2022 12:05:24
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 118. Base do projeto
+ * ············ Aula 119. Conceito de cenas
  * *****
  */
 
@@ -28,14 +28,26 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
-function draw() {}
+let currentScene = {};
 
-function update() {}
+function changeScene(scene) {
+    currentScene = scene;
+}
+
+let menu = {
+    draw() {},
+    update() {},
+};
+
+let game = {
+    draw() {},
+    update() {},
+};
 
 function main() {
     canvas.clearRect(0, 0, 500, 900);
-    draw();
-    update();
+    currentScene.draw();
+    currentScene.update();
     requestAnimationFrame(main);
 }
 
