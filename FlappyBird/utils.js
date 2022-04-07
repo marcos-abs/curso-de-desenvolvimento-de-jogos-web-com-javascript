@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 110. Canos aleatórios
+ * ············ Aula 113. Mostrando, ou não, os objetos
  * *****
  */
 
@@ -33,6 +33,8 @@ class Area {
 class Obj {
     frame = 0; // jshint ignore:line
     timer = 0;
+    set_visible = true;
+
     constructor(x, y, width, height, image) {
         this.x = x;
         this.y = y;
@@ -70,6 +72,7 @@ class Obj {
             this.y < obj.y + obj.height &&
             this.y + this.height > obj.y
         ) {
+            obj.set_visible = false;
             return true;
         } else {
             return false;
@@ -147,20 +150,29 @@ class Pipe extends Obj {
 }
 
 class Coin extends Obj {
+    draw() {
+        if (this.set_visible) {
+            let img = new Image();
+            img.src = this.image;
+            canvas.drawImage(img, this.x, this.y, this.width, this.height);
+        }
+    }
+    // UNDONE: parei aqui em 2m2s de 2m44s da aula 113. Mostrando, ou não, os objetos
     /**
      * @param  {} pipe Objeto que será usado como base para a animação
      */
     move(coin) {
         this.x = coin.x + aBird.width / 2; // a metade do tamanho do pássaro
         this.y = coin.y - aBird.height * 2; // 51 é a distância entre o cano e a moeda
+        if (this.x <= -50) {
+            this.set_visible = true;
+        }
     }
 
     respaw() {
-        // BUG: moeda aparece pulando após colisão
-        // BUG: cano de cima apareceu flutuando completamente fora dos limites
-        // UNDONE: parei aqui em 0m39s de 2m34s da aula 112. Colisão
         this.x = respawPosition;
         this.y = this.calcPosition();
+        this.set_visible = true;
     }
 }
 

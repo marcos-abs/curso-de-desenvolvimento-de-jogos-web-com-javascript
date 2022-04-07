@@ -25,6 +25,7 @@ const aPipeUp = new Area(300, -200, 96, 358);
 const aCoin = new Area(50, 50, 45, 45);
 
 const velocity = 10;
+const gravity = 2;
 const voo = 14;
 const respawPosition = aPipeDown.x;
 let lives = 5;
@@ -95,9 +96,15 @@ let textPoints = new Text();
 let textLives = new Text();
 let textResult = new Text();
 
-document.addEventListener('keydown', function (e) {
+document.addEventListener('keyup', function (e) {
     if (event.key === 'x' || event.key === 'X') {
         bird.vel -= voo;
+    }
+});
+
+document.addEventListener('keydown', function (e) {
+    if (event.key === 'x' || event.key === 'X') {
+        bird.vel -= gravity;
     }
 });
 
@@ -106,14 +113,14 @@ function collides() {
         pipeDown.respaw();
         pipeUp.respaw();
         lives -= 1;
-        bird.vel = 2;
+        bird.vel = gravity;
     }
     if (bird.collide(coin)) {
         pipeDown.respaw();
         pipeUp.respaw();
         coin.respaw();
         pts += 1;
-        bird.vel = 2;
+        bird.vel = gravity;
     }
 }
 

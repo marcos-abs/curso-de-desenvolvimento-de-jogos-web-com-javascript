@@ -1,51 +1,6 @@
 {
 	"files": [
 		{
-			"path": "FlappyBird/utils.js",
-			"bookmarks": [
-				{
-					"line": 154,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				}
-			]
-		},
-		{
 			"path": "FlappyBird/script.js",
 			"bookmarks": [
 				{
@@ -53,7 +8,7 @@
 					"column": 0
 				},
 				{
-					"line": 132,
+					"line": 139,
 					"column": 0
 				},
 				{
