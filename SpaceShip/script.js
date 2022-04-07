@@ -51,4 +51,5 @@ function main() {
     requestAnimationFrame(main);
 }
 
+changeScene(menu);
 main();
