@@ -102,17 +102,27 @@ class Obj {
 }
 
 class Text {
+    text = ''; // jshint ignore:line
+    /**
+     * Construtor da classe
+     * @param  {} text frase ou informação que será mostrada
+     */
+    constructor(text) {
+        this.text = text;
+    }
+
     /**
      * Acrescenta um texto a tela do jogo
      *
-     * @param {*} text frase ou informação que será mostrada
-     * @param {*} px posição no eixo x inicial a informação que será mostrada
-     * @param {*} py idem ao anterior, contudo no eixo y
-     * @memberof Text
+     * @param  {} size
+     * @param  {} font
+     * @param  {} px posição no eixo x inicial a informação que será mostrada
+     * @param  {} py idem ao anterior, contudo no eixo y
+     * @param  {} color
      */
-    draw(text, px, py, color, size = 30, font = 'Arial') {
+    drawText(size, font, px, py, color) {
         canvas.font = `${size}px ${font}`;
         canvas.fillStyle = color;
-        canvas.fillText(text, px, py);
+        canvas.fillText(this.text, px, py);
     }
 }

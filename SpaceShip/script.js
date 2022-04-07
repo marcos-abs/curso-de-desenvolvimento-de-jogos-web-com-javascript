@@ -43,8 +43,10 @@ let menu = {
         aFundo.height,
         'assets/fundo.png',
     ),
+    title: new Text('SpaceShip'),
     draw() {
         this.bg.draw();
+        this.title.drawText(40, 'Arial', 125, 290, 'white');
     },
     update() {},
 };
