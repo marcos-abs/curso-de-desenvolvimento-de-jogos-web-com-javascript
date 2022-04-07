@@ -2,6 +2,7 @@ Alast
 dirx
 diry
 esversion
+gameover
 heroi
 Lifes
 Marcant

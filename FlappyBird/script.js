@@ -98,6 +98,7 @@ let textResult = new Text();
 
 let fly = new Audio('assets/sounds/wing.ogg');
 let coin_pick = new Audio('assets/sounds/point.ogg');
+let gameover = new Audio('assets/sounds/hit.ogg');
 
 document.addEventListener('keyup', function (e) {
     if (event.key === 'x' || event.key === 'X') {
@@ -119,6 +120,7 @@ function collides() {
         pipeUp.respaw();
         lives -= 1;
         bird.vel = gravity;
+        gameover.play();
     }
     if (bird.collide(coin)) {
         pipeDown.respaw();
