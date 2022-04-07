@@ -96,15 +96,20 @@ let textPoints = new Text();
 let textLives = new Text();
 let textResult = new Text();
 
+let fly = new Audio('assets/sounds/wing.ogg');
+let coin_pick = new Audio('assets/sounds/point.ogg');
+
 document.addEventListener('keyup', function (e) {
     if (event.key === 'x' || event.key === 'X') {
         bird.vel -= voo;
+        fly.play();
     }
 });
 
 document.addEventListener('keydown', function (e) {
     if (event.key === 'x' || event.key === 'X') {
         bird.vel -= gravity;
+        fly.play();
     }
 });
 
@@ -121,6 +126,7 @@ function collides() {
         coin.respaw();
         pts += 1;
         bird.vel = gravity;
+        coin_pick.play();
     }
 }
 
@@ -137,14 +143,15 @@ function draw() {
         textPoints.draw('pontos: ' + pts, 15, 30, 'white');
         textLives.draw('vidas: ' + lives, 315, 30, 'white');
     } else {
-        textResult.draw('Game Over', 95, 140, 'red', '50px Arial');
-        textResult.draw('Pontos: ' + pts, 150, 190, 'purple', '30px Arial');
+        textResult.draw('Game Over', 95, 140, 'red', 50, 'Arial');
+        textResult.draw('Pontos: ' + pts, 150, 190, 'purple', 30, 'Arial');
         textResult.draw(
             'Pressione <F5> para reiniciar o jogo.',
             70,
             290,
             'green',
-            '20px Arial',
+            20,
+            'Arial',
         );
     }
 }

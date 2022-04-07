@@ -157,7 +157,6 @@ class Coin extends Obj {
             canvas.drawImage(img, this.x, this.y, this.width, this.height);
         }
     }
-    // UNDONE: parei aqui em 2m2s de 2m44s da aula 113. Mostrando, ou não, os objetos
     /**
      * @param  {} pipe Objeto que será usado como base para a animação
      */
@@ -185,8 +184,8 @@ class Text {
      * @param {*} py idem ao anterior, contudo no eixo y
      * @memberof Text
      */
-    draw(text, px, py, color, font = '30px Arial') {
-        canvas.font = font;
+    draw(text, px, py, color, size = 30, font = 'Arial') {
+        canvas.font = `${size}px ${font}`;
         canvas.fillStyle = color;
         canvas.fillText(text, px, py);
     }
