@@ -12,10 +12,11 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 119. Conceito de cenas
+ * ············ Aula 121. Desenhando na cena
  * *****
  */
 
+const aFundo = new Area(0, 0, 430, 560);
 var canvas = document.getElementById('canvas').getContext('2d');
 
 document.addEventListener('keyup', function (e) {
@@ -35,7 +36,16 @@ function changeScene(scene) {
 }
 
 let menu = {
-    draw() {},
+    bg: new Obj(
+        aFundo.x,
+        aFundo.y,
+        aFundo.width,
+        aFundo.height,
+        'assets/fundo.png',
+    ),
+    draw() {
+        this.bg.draw();
+    },
     update() {},
 };
 
