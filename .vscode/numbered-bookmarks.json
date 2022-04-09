@@ -1,60 +1,15 @@
 {
 	"files": [
 		{
-			"path": "SpaceShip/util.js",
-			"bookmarks": [
-				{
-					"line": 123,
-					"column": 41
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				},
-				{
-					"line": -1,
-					"column": 0
-				}
-			]
-		},
-		{
 			"path": "SpaceShip/script.js",
 			"bookmarks": [
 				{
-					"line": -1,
-					"column": 0
+					"line": 14,
+					"column": 21
 				},
 				{
-					"line": 100,
-					"column": 18
+					"line": 41,
+					"column": 25
 				},
 				{
 					"line": -1,

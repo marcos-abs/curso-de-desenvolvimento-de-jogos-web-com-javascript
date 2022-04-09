@@ -12,12 +12,13 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 132. Função dos clicks em cada tela
+ * ············ Aula 133. Conceito de grupos
  * *****
  */
 
 const aFundo = new Area(0, 0, 430, 560, 1);
 const aNave = new Area(200, 495, 60, 50);
+const aTiro = new Area(0, 0, 2, 10);
 let canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
 
@@ -40,6 +41,15 @@ let currentScene = {};
 function changeScene(scene) {
     currentScene = scene;
 }
+
+let groupShoot = [];
+let shoot = new Obj(
+    aTiro.x,
+    aTiro.y,
+    aTiro.width,
+    aTiro.height,
+    'assets/tiro.png',
+);
 
 let infinityBg = {
     bg: new Obj(
