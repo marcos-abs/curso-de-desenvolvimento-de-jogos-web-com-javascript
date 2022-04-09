@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 133. Conceito de grupos
+ * ············ Aula 134. Colocando em pratica
  * *****
  */
 
@@ -43,14 +43,14 @@ function changeScene(scene) {
 }
 
 let groupShoot = [];
-let shoot = new Obj(
+/* let shoot = new Obj(
     aTiro.x,
     aTiro.y,
     aTiro.width,
     aTiro.height,
     'assets/tiro.png',
 );
-
+ */
 let infinityBg = {
     bg: new Obj(
         aFundo.x,
@@ -115,7 +115,17 @@ let game = {
         aNave.height,
         'assets/nave.png',
     ),
-    click() {},
+    click() {
+        groupShoot.push(
+            new Obj(
+                this.ship.x + this.ship.width / 2,
+                this.ship.y - 10,
+                aTiro.width,
+                aTiro.height,
+                'assets/tiro.png',
+            ),
+        );
+    },
     moveShip(event) {
         this.ship.x = event.offsetX - this.ship.width / 2;
         this.ship.y = event.offsetY - this.ship.height / 2;
@@ -124,6 +134,9 @@ let game = {
         infinityBg.draw();
         this.score.drawText(20, 'Arial', 20, 30, 'white');
         this.ship.draw();
+        groupShoot.forEach((shoot) => {
+            shoot.draw();
+        });
     },
     update() {
         infinityBg.moveBg();
