@@ -12,12 +12,12 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 127. Bg infinito
+ * ············ Aula 128. Finalizando o Menu
  * *****
  */
 
 const aFundo = new Area(0, 0, 430, 560, 1);
-const aNave = new Area(200, 500, 60, 50);
+const aNave = new Area(200, 465, 60, 50);
 let canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
 
@@ -49,6 +49,14 @@ let menu = {
         'assets/fundo.png',
     ),
     title: new Text('SpaceShip'),
+    label: new Text('Click to Play'),
+    ship: new Obj(
+        aNave.x,
+        aNave.y,
+        aNave.width,
+        aNave.height,
+        'assets/nave.png',
+    ),
     moveBg() {
         this.bg.y += aFundo.speed;
         this.bg2.y += aFundo.speed;
@@ -62,7 +70,9 @@ let menu = {
     draw() {
         this.bg.draw();
         this.bg2.draw();
-        this.title.drawText(40, 'Arial', 125, 290, 'white');
+        this.title.drawText(60, 'Arial', 75, 250, 'white');
+        this.label.drawText(20, 'Arial', 165, 345, 'white');
+        this.ship.draw();
     },
     update() {
         this.moveBg();
