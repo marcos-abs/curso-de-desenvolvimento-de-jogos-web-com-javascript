@@ -25,11 +25,12 @@ class Area {
      * @param  {} width Largura da área
      * @param  {} height Altura da área
      */
-    constructor(x, y, width, height) {
+    constructor(x, y, width, height, speed = 0) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.speed = speed;
     }
 }
 

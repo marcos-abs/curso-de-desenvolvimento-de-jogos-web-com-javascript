@@ -12,11 +12,11 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 126. Cena de GameOver
+ * ············ Aula 127. Bg infinito
  * *****
  */
 
-const aFundo = new Area(0, 0, 430, 560);
+const aFundo = new Area(0, 0, 430, 560, 1);
 const aNave = new Area(200, 500, 60, 50);
 let canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
@@ -41,12 +41,32 @@ let menu = {
         aFundo.height,
         'assets/fundo.png',
     ),
+    bg2: new Obj(
+        aFundo.x,
+        -(aFundo.y + aFundo.height),
+        aFundo.width,
+        aFundo.height,
+        'assets/fundo.png',
+    ),
     title: new Text('SpaceShip'),
+    moveBg() {
+        this.bg.y += aFundo.speed;
+        this.bg2.y += aFundo.speed;
+        if (this.bg.y >= aFundo.y + aFundo.height) {
+            this.bg.y = aFundo.y;
+        }
+        if (this.bg2.y >= aFundo.y) {
+            this.bg2.y = -(aFundo.y + aFundo.height);
+        }
+    },
     draw() {
         this.bg.draw();
+        this.bg2.draw();
         this.title.drawText(40, 'Arial', 125, 290, 'white');
     },
-    update() {},
+    update() {
+        this.moveBg();
+    },
 };
 
 let game = {
