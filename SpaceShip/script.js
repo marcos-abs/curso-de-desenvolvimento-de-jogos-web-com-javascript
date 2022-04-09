@@ -12,12 +12,13 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 121. Desenhando na cena
+ * ············ Aula 123. Removendo Anti-Analysing
  * *****
  */
 
 const aFundo = new Area(0, 0, 430, 560);
 var canvas = document.getElementById('canvas').getContext('2d');
+canvas.imageSmoothingEnabled = false;
 
 document.addEventListener('keyup', function (e) {
     if (event.key === 'x' || event.key === 'X') {
