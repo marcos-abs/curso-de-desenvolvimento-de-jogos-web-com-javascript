@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 129. Bg infinito para todas as cenas
+ * ············ Aula 131. Correção da aula anterior
  * *****
  */
 
@@ -101,8 +101,8 @@ let game = {
         'assets/nave.png',
     ),
     moveShip(event) {
-        this.ship.x = event.clientX - this.ship.width / 2 - 10;
-        this.ship.y = event.clientY - this.ship.height / 2 - 10;
+        this.ship.x = event.offsetX - this.ship.width / 2;
+        this.ship.y = event.offsetY - this.ship.height / 2;
     },
     draw() {
         infinityBg.draw();
