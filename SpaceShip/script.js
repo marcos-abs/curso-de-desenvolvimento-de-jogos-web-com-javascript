@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 125. Adicionando OBJs no game
+ * ············ Aula 126. Cena de GameOver
  * *****
  */
 
@@ -69,6 +69,24 @@ let game = {
         this.bg.draw();
         this.score.drawText(20, 'Arial', 20, 30, 'white');
         this.ship.draw();
+    },
+    update() {},
+};
+
+let gameOver = {
+    bg: new Obj(
+        aFundo.x,
+        aFundo.y,
+        aFundo.width,
+        aFundo.height,
+        'assets/fundo.png',
+    ),
+
+    score: new Text('Pontos: ' + pontos, 'Arial', 20, 20, 'white'),
+
+    draw() {
+        this.bg.draw();
+        this.score.drawText(20, 'Arial', 20, 30, 'white');
     },
     update() {},
 };
