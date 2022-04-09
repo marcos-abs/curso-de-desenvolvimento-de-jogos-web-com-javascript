@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 123. Removendo Anti-Analysing
+ * ············ Aula 124. Trocando de cena
  * *****
  */
 
@@ -20,7 +20,7 @@ const aFundo = new Area(0, 0, 430, 560);
 var canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
 
-document.addEventListener('keyup', function (e) {
+/* document.addEventListener('keyup', function (e) {
     if (event.key === 'x' || event.key === 'X') {
     }
 });
@@ -28,6 +28,11 @@ document.addEventListener('keyup', function (e) {
 document.addEventListener('keydown', function (e) {
     if (event.key === 'x' || event.key === 'X') {
     }
+});
+ */
+
+document.addEventListener('click', function (e) {
+    changeScene(game);
 });
 
 let currentScene = {};
