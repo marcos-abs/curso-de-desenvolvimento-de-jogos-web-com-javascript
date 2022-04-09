@@ -27,6 +27,12 @@ document.addEventListener('click', function (e) {
     changeScene(game);
 });
 
+document.addEventListener('mousemove', function (e) {
+    if (currentScene.moveShip) {
+        currentScene.moveShip(e);
+    }
+});
+
 let currentScene = {};
 
 function changeScene(scene) {
@@ -94,6 +100,10 @@ let game = {
         aNave.height,
         'assets/nave.png',
     ),
+    moveShip(event) {
+        this.ship.x = event.clientX - this.ship.width / 2 - 10;
+        this.ship.y = event.clientY - this.ship.height / 2 - 10;
+    },
     draw() {
         infinityBg.draw();
         this.score.drawText(20, 'Arial', 20, 30, 'white');
