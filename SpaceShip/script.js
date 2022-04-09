@@ -12,7 +12,7 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 131. Correção da aula anterior
+ * ············ Aula 132. Função dos clicks em cada tela
  * *****
  */
 
@@ -24,7 +24,9 @@ canvas.imageSmoothingEnabled = false;
 let pontos = 0;
 
 document.addEventListener('click', function (e) {
-    changeScene(game);
+    if (currentScene.click) {
+        currentScene.click();
+    }
 });
 
 document.addEventListener('mousemove', function (e) {
@@ -80,6 +82,9 @@ let menu = {
         aNave.height,
         'assets/nave.png',
     ),
+    click() {
+        changeScene(game);
+    },
     draw() {
         infinityBg.draw();
         this.title.drawText(60, 'Arial', 75, 250, 'white');
@@ -100,6 +105,7 @@ let game = {
         aNave.height,
         'assets/nave.png',
     ),
+    click() {},
     moveShip(event) {
         this.ship.x = event.offsetX - this.ship.width / 2;
         this.ship.y = event.offsetY - this.ship.height / 2;
