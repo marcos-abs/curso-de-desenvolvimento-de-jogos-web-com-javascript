@@ -12,24 +12,16 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 124. Trocando de cena
+ * ············ Aula 125. Adicionando OBJs no game
  * *****
  */
 
 const aFundo = new Area(0, 0, 430, 560);
-var canvas = document.getElementById('canvas').getContext('2d');
+const aNave = new Area(200, 500, 60, 50);
+let canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
 
-/* document.addEventListener('keyup', function (e) {
-    if (event.key === 'x' || event.key === 'X') {
-    }
-});
-
-document.addEventListener('keydown', function (e) {
-    if (event.key === 'x' || event.key === 'X') {
-    }
-});
- */
+let pontos = 0;
 
 document.addEventListener('click', function (e) {
     changeScene(game);
@@ -58,7 +50,26 @@ let menu = {
 };
 
 let game = {
-    draw() {},
+    bg: new Obj(
+        aFundo.x,
+        aFundo.y,
+        aFundo.width,
+        aFundo.height,
+        'assets/fundo.png',
+    ),
+    score: new Text('Pontos: ' + pontos, 'Arial', 20, 20, 'white'),
+    ship: new Obj(
+        aNave.x,
+        aNave.y,
+        aNave.width,
+        aNave.height,
+        'assets/nave.png',
+    ),
+    draw() {
+        this.bg.draw();
+        this.score.drawText(20, 'Arial', 20, 30, 'white');
+        this.ship.draw();
+    },
     update() {},
 };
 
