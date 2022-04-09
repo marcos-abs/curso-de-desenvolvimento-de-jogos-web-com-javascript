@@ -12,13 +12,13 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 134. Colocando em pratica
+ * ············ Aula 135. Movimentando os tiros
  * *****
  */
 
 const aFundo = new Area(0, 0, 430, 560, 1);
 const aNave = new Area(200, 495, 60, 50);
-const aTiro = new Area(0, 0, 2, 10);
+const aTiro = new Area(0, 0, 2, 10, 10);
 let canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
 
@@ -43,14 +43,7 @@ function changeScene(scene) {
 }
 
 let groupShoot = [];
-/* let shoot = new Obj(
-    aTiro.x,
-    aTiro.y,
-    aTiro.width,
-    aTiro.height,
-    'assets/tiro.png',
-);
- */
+
 let infinityBg = {
     bg: new Obj(
         aFundo.x,
@@ -117,9 +110,9 @@ let game = {
     ),
     click() {
         groupShoot.push(
-            new Obj(
-                this.ship.x + this.ship.width / 2,
-                this.ship.y - 10,
+            new Shoot(
+                this.ship.x + this.ship.width / 2, // (this.ship.width / 2) => refere-se ao meio da nave
+                this.ship.y - 10, // (- 10) => refere-se ao topo da nave
                 aTiro.width,
                 aTiro.height,
                 'assets/tiro.png',
@@ -140,6 +133,9 @@ let game = {
     },
     update() {
         infinityBg.moveBg();
+        groupShoot.forEach((shoot) => {
+            shoot.move(); // UNDONE: parei aqui em 1m50s de 2m10s
+        });
     },
 };
 

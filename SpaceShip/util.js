@@ -24,6 +24,7 @@ class Area {
      * @param  {} y Posição em Y
      * @param  {} width Largura da área
      * @param  {} height Altura da área
+     * @param  {} speed Velocidade do objeto
      */
     constructor(x, y, width, height, speed = 0) {
         this.x = x;
@@ -125,5 +126,11 @@ class Text {
         canvas.font = `${size}px ${font}`;
         canvas.fillStyle = color;
         canvas.fillText(this.text, px, py);
+    }
+}
+
+class Shoot extends Obj {
+    move() {
+        this.y -= aTiro.speed; //(!!) muito massa.
     }
 }
