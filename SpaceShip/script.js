@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Saturday, 09 April 2022 12:38:32
+ * Last Modified: Monday, 11 April 2022 10:23:43
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 135. Movimentando os tiros
+ * ············ Aula 136. deletando os tiros
  * *****
  */
 
@@ -23,6 +23,7 @@ let canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
 
 let pontos = 0;
+const limiteTiros = 30;
 
 document.addEventListener('click', function (e) {
     if (currentScene.click) {
@@ -134,7 +135,10 @@ let game = {
     update() {
         infinityBg.moveBg();
         groupShoot.forEach((shoot) => {
-            shoot.move(); // UNDONE: parei aqui em 1m50s de 2m10s
+            shoot.move();
+            if (shoot.y <= limiteTiros) {
+                groupShoot.splice(shoot[0], 1);
+            }
         });
     },
 };
