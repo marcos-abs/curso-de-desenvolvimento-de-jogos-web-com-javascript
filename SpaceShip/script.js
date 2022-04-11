@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Monday, 11 April 2022 10:38:55
+ * Last Modified: Monday, 11 April 2022 11:09:55
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 138. Base para os cometas
+ * ············ Aula 139. Desenhando e atualizando os cometas
  * *****
  */
 
@@ -63,8 +63,19 @@ let shoots = {
 
 let groupMeteors = [];
 let meteors = {
-    draw() {},
-    update() {},
+    draw() {
+        groupMeteors.forEach((m) => {
+            m.draw();
+        });
+    },
+    update() {
+        groupMeteors.foreach((m) => {
+            m.move();
+            if (m.y >= aFundo.height) {
+                groupMeteors.splice(m[0], 1);
+            }
+        });
+    },
 };
 
 let infinityBg = {
