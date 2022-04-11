@@ -134,3 +134,9 @@ class Shoot extends Obj {
         this.y -= aTiro.speed; //(!!) muito massa.
     }
 }
+
+class Meteor extends Obj {
+    move() {
+        this.y += aMeteoro.speed;
+    }
+}

@@ -12,13 +12,14 @@
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 137. Organizando o código
+ * ············ Aula 138. Base para os cometas
  * *****
  */
 
 const aFundo = new Area(0, 0, 430, 560, 1);
 const aNave = new Area(200, 495, 60, 50);
 const aTiro = new Area(0, 0, 2, 10, 10);
+const aMeteoro = new Area(0, 0, 13, 13, 10);
 let canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
 
@@ -58,6 +59,12 @@ let shoots = {
             }
         });
     },
+};
+
+let groupMeteors = [];
+let meteors = {
+    draw() {},
+    update() {},
 };
 
 let infinityBg = {
