@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Monday, 11 April 2022 10:23:43
+ * Last Modified: Monday, 11 April 2022 10:38:55
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 136. deletando os tiros
+ * ············ Aula 137. Organizando o código
  * *****
  */
 
@@ -44,6 +44,21 @@ function changeScene(scene) {
 }
 
 let groupShoot = [];
+let shoots = {
+    draw() {
+        groupShoot.forEach((shoot) => {
+            shoot.draw();
+        });
+    },
+    update() {
+        groupShoot.forEach((shoot) => {
+            shoot.move();
+            if (shoot.y <= limiteTiros) {
+                groupShoot.splice(shoot[0], 1);
+            }
+        });
+    },
+};
 
 let infinityBg = {
     bg: new Obj(
@@ -128,18 +143,11 @@ let game = {
         infinityBg.draw();
         this.score.drawText(20, 'Arial', 20, 30, 'white');
         this.ship.draw();
-        groupShoot.forEach((shoot) => {
-            shoot.draw();
-        });
+        shoots.draw();
     },
     update() {
         infinityBg.moveBg();
-        groupShoot.forEach((shoot) => {
-            shoot.move();
-            if (shoot.y <= limiteTiros) {
-                groupShoot.splice(shoot[0], 1);
-            }
-        });
+        shoots.update();
     },
 };
 
