@@ -6,20 +6,20 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Monday, 11 April 2022 11:09:55
+ * Last Modified: Monday, 11 April 2022 13:41:36
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 139. Desenhando e atualizando os cometas
+ * ············ Aula 140. Adicionando os cometas no jogo
  * *****
  */
 
 const aFundo = new Area(0, 0, 430, 560, 1);
 const aNave = new Area(200, 495, 60, 50);
 const aTiro = new Area(0, 0, 2, 10, 10);
-const aMeteoro = new Area(0, 0, 13, 13, 10);
+const aMeteoro = new Area(20, -100, 50, 50, 10);
 let canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
 
@@ -69,7 +69,7 @@ let meteors = {
         });
     },
     update() {
-        groupMeteors.foreach((m) => {
+        groupMeteors.forEach((m) => {
             m.move();
             if (m.y >= aFundo.height) {
                 groupMeteors.splice(m[0], 1);
@@ -152,6 +152,15 @@ let game = {
                 'assets/tiro.png',
             ),
         );
+        groupMeteors.push(
+            new Meteor(
+                aMeteoro.x,
+                aMeteoro.y,
+                aMeteoro.width,
+                aMeteoro.height,
+                'assets/meteoro.png',
+            ),
+        );
     },
     moveShip(event) {
         this.ship.x = event.offsetX - this.ship.width / 2;
@@ -162,10 +171,12 @@ let game = {
         this.score.drawText(20, 'Arial', 20, 30, 'white');
         this.ship.draw();
         shoots.draw();
+        meteors.draw();
     },
     update() {
         infinityBg.moveBg();
         shoots.update();
+        meteors.update();
     },
 };
 

@@ -4,6 +4,7 @@ diry
 esversion
 gameover
 heroi
+infity
 Lifes
 Marcant
 Onix
