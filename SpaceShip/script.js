@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Monday, 11 April 2022 13:41:36
+ * Last Modified: Monday, 11 April 2022 13:52:57
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 140. Adicionando os cometas no jogo
+ * ············ Aula 141. Spawn de cometas
  * *****
  */
 
@@ -63,12 +63,29 @@ let shoots = {
 
 let groupMeteors = [];
 let meteors = {
+    time: 0,
+    spawnMeteors() {
+        this.time += aMeteoro.speed;
+        if (this.time >= 1000) {
+            this.time = 0;
+            groupMeteors.push(
+                new Meteor(
+                    aMeteoro.x,
+                    aMeteoro.y,
+                    aMeteoro.width,
+                    aMeteoro.height,
+                    'assets/meteoro.png',
+                ),
+            );
+        }
+    },
     draw() {
         groupMeteors.forEach((m) => {
             m.draw();
         });
     },
     update() {
+        this.spawnMeteors();
         groupMeteors.forEach((m) => {
             m.move();
             if (m.y >= aFundo.height) {
@@ -152,7 +169,7 @@ let game = {
                 'assets/tiro.png',
             ),
         );
-        groupMeteors.push(
+        /* groupMeteors.push(
             new Meteor(
                 aMeteoro.x,
                 aMeteoro.y,
@@ -160,7 +177,7 @@ let game = {
                 aMeteoro.height,
                 'assets/meteoro.png',
             ),
-        );
+        ); */
     },
     moveShip(event) {
         this.ship.x = event.offsetX - this.ship.width / 2;
@@ -201,7 +218,7 @@ let gameOver = {
 };
 
 function main() {
-    canvas.clearRect(0, 0, 500, 900);
+    canvas.clearRect(aFundo.x, aFundo.y, aFundo.width, aFundo.height);
     currentScene.draw();
     currentScene.update();
     requestAnimationFrame(main);
