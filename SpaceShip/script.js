@@ -27,7 +27,7 @@ const limiteTiros = 30;
 const maxTimer = 1000;
 const metMax = 80;
 const metMin = 50;
-const metSpd = 10;
+const metSpd = 5;
 
 document.addEventListener('click', function (e) {
     if (currentScene.click) {
@@ -46,7 +46,7 @@ let currentScene = {};
 function changeScene(scene) {
     currentScene = scene;
 }
-
+let bullets = 1; // número de tiros possíveis
 let groupShoot = [];
 let shoots = {
     draw() {
@@ -86,6 +86,7 @@ let meteors = {
                     groupShoot.splice(groupShoot.indexOf(shoot), 1);
                     groupMeteors.splice(groupMeteors.indexOf(meteor), 1);
                     pontos += 10;
+                    bullets = 1;
                 }
             });
         });
@@ -173,15 +174,18 @@ let game = {
         'assets/nave.png',
     ),
     click() {
-        groupShoot.push(
-            new Shoot(
-                this.ship.x + this.ship.width / 2, // (this.ship.width / 2) => refere-se ao meio da nave
-                this.ship.y - 10, // (- 10) => refere-se ao topo da nave
-                aTiro.width,
-                aTiro.height,
-                'assets/tiro.png',
-            ),
-        );
+        if (bullets > 0) {
+            bullets -= 1;
+            groupShoot.push(
+                new Shoot(
+                    this.ship.x + this.ship.width / 2, // (this.ship.width / 2) => refere-se ao meio da nave
+                    this.ship.y - 10, // (- 10) => refere-se ao topo da nave
+                    aTiro.width,
+                    aTiro.height,
+                    'assets/tiro.png',
+                ),
+            );
+        }
     },
     moveShip(event) {
         this.ship.x = event.offsetX - this.ship.width / 2;
@@ -222,6 +226,7 @@ let gameOver = {
         infinityBg.moveBg();
     },
     click() {
+        bullets = 1;
         changeScene(menu); // retorna para o menu caso clique novamente
     },
 };
