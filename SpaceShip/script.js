@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Tuesday, 12 April 2022 11:52:12
+ * Last Modified: Tuesday, 12 April 2022 14:43:19
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 143. Posição dos cometas
+ * ············ Aula 144. Removendo Cometas
  * *****
  */
 
@@ -88,8 +88,8 @@ let meteors = {
         this.spawnMeteors();
         groupMeteors.forEach((m) => {
             m.move();
-            if (m.y >= aFundo.height) {
-                groupMeteors.splice(m[0], 1);
+            if (m.y > aFundo.height) {
+                groupMeteors.splice(groupMeteors.indexOf(m), 1); // "groupMeteors.indexOf(m)" remove o "atual" meteoro da lista
             }
         });
     },
