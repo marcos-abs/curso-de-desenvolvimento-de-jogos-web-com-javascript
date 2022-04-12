@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Tuesday, 12 April 2022 11:02:06
+ * Last Modified: Tuesday, 12 April 2022 11:52:34
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 142. Velocidade dos cometas
+ * ············ Aula 143. Posição dos cometas
  * *****
  */
 
@@ -136,7 +136,7 @@ class Shoot extends Obj {
 }
 
 class Meteor extends Obj {
-    speed = Math.random() * (aMeteoro.speed - 2) + 2; // jshint ignore:line
+    speed = Math.random() * (metSpd - 2) + 2; // jshint ignore:line
     move() {
         this.y += this.speed;
     }

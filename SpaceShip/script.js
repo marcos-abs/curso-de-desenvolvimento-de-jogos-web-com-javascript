@@ -6,25 +6,28 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Tuesday, 12 April 2022 11:01:24
+ * Last Modified: Tuesday, 12 April 2022 11:52:12
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 142. Velocidade dos cometas
+ * ············ Aula 143. Posição dos cometas
  * *****
  */
 
 const aFundo = new Area(0, 0, 430, 560, 1);
 const aNave = new Area(200, 495, 60, 50);
 const aTiro = new Area(0, 0, 2, 10, 10);
-const aMeteoro = new Area(20, -100, 50, 50, 10);
 let canvas = document.getElementById('canvas').getContext('2d');
 canvas.imageSmoothingEnabled = false;
 
 let pontos = 0;
 const limiteTiros = 30;
+const maxTimer = 1000;
+const metMax = 80;
+const metMin = 50;
+const metSpd = 10;
 
 document.addEventListener('click', function (e) {
     if (currentScene.click) {
@@ -65,17 +68,14 @@ let groupMeteors = [];
 let meteors = {
     time: 0,
     spawnMeteors() {
-        this.time += aMeteoro.speed;
-        if (this.time >= 1000) {
+        this.time += metSpd;
+        size = Math.random() * (metMax - metMin) + metMin;
+        posx = Math.random() * (aFundo.width - size) + size;
+        posy = -size; // para criar um meteoro antes do topo da tela
+        if (this.time >= maxTimer) {
             this.time = 0;
             groupMeteors.push(
-                new Meteor(
-                    aMeteoro.x,
-                    aMeteoro.y,
-                    aMeteoro.width,
-                    aMeteoro.height,
-                    'assets/meteoro.png',
-                ),
+                new Meteor(posx, posy, size, size, 'assets/meteoro.png'),
             );
         }
     },
@@ -169,15 +169,6 @@ let game = {
                 'assets/tiro.png',
             ),
         );
-        /* groupMeteors.push(
-            new Meteor(
-                aMeteoro.x,
-                aMeteoro.y,
-                aMeteoro.width,
-                aMeteoro.height,
-                'assets/meteoro.png',
-            ),
-        ); */
     },
     moveShip(event) {
         this.ship.x = event.offsetX - this.ship.width / 2;

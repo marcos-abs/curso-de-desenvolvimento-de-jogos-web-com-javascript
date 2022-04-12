@@ -4,7 +4,11 @@
 			"path": "SpaceShip/script.js",
 			"bookmarks": [
 				{
-					"line": -1,
+					"line": 70,
+					"column": 34
+				},
+				{
+					"line": 27,
 					"column": 0
 				},
 				{
@@ -12,16 +16,12 @@
 					"column": 0
 				},
 				{
-					"line": 64,
+					"line": -1,
 					"column": 0
 				},
 				{
-					"line": 165,
-					"column": 8
-				},
-				{
-					"line": 195,
-					"column": 22
+					"line": -1,
+					"column": 0
 				},
 				{
 					"line": -1,
