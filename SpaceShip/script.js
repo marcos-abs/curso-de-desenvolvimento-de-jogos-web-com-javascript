@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Tuesday, 12 April 2022 15:46:38
+ * Last Modified: Tuesday, 12 April 2022 15:49:52
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 148. Texto de GameOver
+ * ············ Aula 149. Looping de Jogo
  * *****
  */
 
@@ -220,6 +220,9 @@ let gameOver = {
     },
     update() {
         infinityBg.moveBg();
+    },
+    click() {
+        changeScene(menu); // retorna para o menu caso clique novamente
     },
 };
 
