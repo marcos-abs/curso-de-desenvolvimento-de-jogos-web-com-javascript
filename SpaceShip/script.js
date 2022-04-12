@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Tuesday, 12 April 2022 17:00:41
+ * Last Modified: Tuesday, 12 April 2022 17:13:20
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 151. Aplicando Score
+ * ············ Aula 152. Limpando o jogo
  * *****
  */
 
@@ -227,9 +227,14 @@ let gameOver = {
         infinityBg.moveBg();
         this.score.updateText('Pontos: ' + pontos);
     },
-    click() {
+    cleanScene() {
         bullets = 1;
         pontos = 0;
+        groupMeteors = [];
+        groupShoot = [];
+    },
+    click() {
+        this.cleanScene();
         changeScene(menu); // retorna para o menu caso clique novamente
     },
 };
