@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Tuesday, 12 April 2022 14:43:19
+ * Last Modified: Tuesday, 12 April 2022 14:54:17
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 144. Removendo Cometas
+ * ············ Aula 145. Destruindo cometas
  * *****
  */
 
@@ -79,6 +79,17 @@ let meteors = {
             );
         }
     },
+    destroyMeteors() {
+        groupShoot.forEach((shoot) => {
+            groupMeteors.forEach((meteor) => {
+                if (shoot.collide(meteor)) {
+                    groupShoot.splice(groupShoot.indexOf(shoot), 1);
+                    groupMeteors.splice(groupMeteors.indexOf(meteor), 1);
+                    pontos += 10;
+                }
+            });
+        });
+    },
     draw() {
         groupMeteors.forEach((m) => {
             m.draw();
@@ -86,6 +97,7 @@ let meteors = {
     },
     update() {
         this.spawnMeteors();
+        this.destroyMeteors();
         groupMeteors.forEach((m) => {
             m.move();
             if (m.y > aFundo.height) {
