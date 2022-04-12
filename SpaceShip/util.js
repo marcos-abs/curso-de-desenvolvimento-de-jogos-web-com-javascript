@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Tuesday, 12 April 2022 11:52:34
+ * Last Modified: Tuesday, 12 April 2022 16:50:37
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 143. Posição dos cometas
+ * ············ Aula 151. Aplicando Score
  * *****
  */
 
@@ -126,6 +126,10 @@ class Text {
         canvas.font = `${size}px ${font}`;
         canvas.fillStyle = color;
         canvas.fillText(this.text, px, py);
+    }
+
+    updateText(text) {
+        this.text = text;
     }
 }
 

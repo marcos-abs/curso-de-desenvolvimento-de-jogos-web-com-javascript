@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Tuesday, 12 April 2022 15:49:52
+ * Last Modified: Tuesday, 12 April 2022 17:00:41
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 149. Looping de Jogo
+ * ············ Aula 151. Aplicando Score
  * *****
  */
 
@@ -27,7 +27,7 @@ const limiteTiros = 30;
 const maxTimer = 1000;
 const metMax = 80;
 const metMin = 50;
-const metSpd = 5;
+const metSpd = 8;
 
 document.addEventListener('click', function (e) {
     if (currentScene.click) {
@@ -85,7 +85,7 @@ let meteors = {
                 if (shoot.collide(meteor)) {
                     groupShoot.splice(groupShoot.indexOf(shoot), 1);
                     groupMeteors.splice(groupMeteors.indexOf(meteor), 1);
-                    pontos += 10;
+                    pontos += 1;
                     bullets = 1;
                 }
             });
@@ -200,6 +200,7 @@ let game = {
     },
     update() {
         infinityBg.moveBg();
+        this.score.updateText('Pontos: ' + pontos);
         shoots.update();
         meteors.update();
     },
@@ -224,9 +225,11 @@ let gameOver = {
     },
     update() {
         infinityBg.moveBg();
+        this.score.updateText('Pontos: ' + pontos);
     },
     click() {
         bullets = 1;
+        pontos = 0;
         changeScene(menu); // retorna para o menu caso clique novamente
     },
 };
