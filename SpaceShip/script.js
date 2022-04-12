@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Tuesday, 12 April 2022 14:54:17
+ * Last Modified: 147. Game over
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 145. Destruindo cometas
+ * ············ Aula 147. Game over
  * *****
  */
 
@@ -102,6 +102,7 @@ let meteors = {
             m.move();
             if (m.y > aFundo.height) {
                 groupMeteors.splice(groupMeteors.indexOf(m), 1); // "groupMeteors.indexOf(m)" remove o "atual" meteoro da lista
+                changeScene(gameOver);
             }
         });
     },
