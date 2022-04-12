@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: 147. Game over
+ * Last Modified: Tuesday, 12 April 2022 15:46:38
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 147. Game over
+ * ············ Aula 148. Texto de GameOver
  * *****
  */
 
@@ -210,11 +210,13 @@ let gameOver = {
         'assets/fundo.png',
     ),
 
-    score: new Text('Pontos: ' + pontos, 'Arial', 20, 20, 'white'),
+    score: new Text('Pontos: ' + pontos),
+    label_gameOver: new Text('Game Over'),
 
     draw() {
         infinityBg.draw();
         this.score.drawText(20, 'Arial', 20, 30, 'white');
+        this.label_gameOver.drawText(60, 'Arial', 65, 300, 'white');
     },
     update() {
         infinityBg.moveBg();
