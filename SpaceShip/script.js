@@ -6,13 +6,13 @@
  * File Created: Thursday, 07 April 2022 11:25:38
  * Author: Marcos Antônio Barbosa de Souza (marcantech@uol.com.br)
  * -----
- * Last Modified: Monday, 11 April 2022 13:52:57
+ * Last Modified: Tuesday, 12 April 2022 11:01:24
  * Modified By: Marcos Antônio Barbosa de Souza (<marcantech@uol.com.br>)
  * -----
  * Copyright (c) 2022 All rights reserved, Marcant Tecnologia da Informação
  * -----
  * Description:
- * ············ Aula 141. Spawn de cometas
+ * ············ Aula 142. Velocidade dos cometas
  * *****
  */
 
